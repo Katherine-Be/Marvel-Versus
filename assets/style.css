@@ -1,1 +1,22 @@
+header { /*will be reformatted once banner image is added*/
+    background-color: black;
+    height: 20vh;
+}
 
+section {
+    background-color: #00991f;
+    margin: 0 15% 0 15%;
+}
+
+.teams {
+    text-align: center;
+}
+
+#fight {
+    /*use button styler that was shown in class*/
+}
+
+.teams ol {
+    display: flex;
+    justify-content: space-around;
+}

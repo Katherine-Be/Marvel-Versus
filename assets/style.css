@@ -21,6 +21,55 @@ ol {
     justify-content: space-around;
 }
 
+/*------------------Chris Testing Additions------------------------ */
+
+body {
+    background-color: black;
+}
+
+.selectedCharacter {
+    border: solid black 5px; 
+    width: 200px; 
+    height: 200px;
+    margin-top: 10px;  
+}
+
+.cpuSelected {
+    border: solid black 5px; 
+    width: 200px; 
+    height: 200px; 
+    margin-top: 10px; 
+}
+
+.characterSelect {
+    border: solid black 5px; 
+    width: 200px; 
+    height: 200px; 
+    margin-top: 10px; 
+
+}
+.testPic {
+    width: 200px; 
+    height: 200px; 
+
+    
+}
+
+#myImage {
+border: solid black 5px; 
+width: 200px; 
+height: 200px;
+margin-top: 10px; 
+}
+#namePlate {
+    color:rgb(255, 255, 255);
+    
+
+
+}
+/*----------------------------------------------------------------- */
+
+
 figure {
     width: 100px;
     height: 100px;

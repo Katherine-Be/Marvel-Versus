@@ -8,7 +8,7 @@ section {
     margin: 0 15% 0 15%;
 }
 
-.teams {
+article {
     text-align: center;
 }
 
@@ -16,10 +16,11 @@ section {
     /*use button styler that was shown in class*/
 }
 
-.teams ol {
+ol {
     display: flex;
     justify-content: space-around;
 }
+
 /*------------------Chris Testing Additions------------------------ */
 
 body {
@@ -67,3 +68,10 @@ margin-top: 10px;
 
 }
 /*----------------------------------------------------------------- */
+
+
+figure {
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+}

@@ -21,10 +21,14 @@ var fightMusicShortSFX = new Audio('./assets/game-sounds/fight music short.mp3')
 
 //youtube player display
 function onYouTubeIframeAPIReady() {
+  
   player = new YT.Player('player', {
     height: '390',
     width: '640',
-    videoId: 'DX5kJ2hYQcQ',
+    videoId: 'K1imOiVCgYM',
+    autoplay: 1,
+    startSeconds: 14,
+    enSeconds: 18,
   });
 }
 

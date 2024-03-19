@@ -5,20 +5,38 @@
 // Fight Function - lock in function - CPU chooses their characters. both arrays of comic sales are compared
 // higher comic sales are the winner. Display results modal. 
 // Play Again - refresh page
-
 var selectedCharacter1El = document.getElementById('#characterBox1');
 var characterSelectbtnEl = document.getElementById('#selectbtn')
-
 let choiceCount = 0;
 let playerPower = []
+var backgroundSFX = new Audio('./assets/game-sounds/player selection screen.mp3');
+var kombatFightSFX = new Audio('./assets/game-sounds/faceoff sound-fight.mp3')
+var fightMusic = new Audio('assets/game-sounds/fight music.mp3');
+var hitSFX = new Audio('./assets/game-sounds/hit sound.wav');
+var selectedPlayerSFX = new Audio('./assets/game-sounds/prefaceoff music.wav');
+var winSFX = new Audio('./assets/game-sounds/up notification.wav');
+var defeatSFX= new Audio('./assets/game-sounds/you-lose-101soundboards.mp3');
+var victorySFX = new Audio('./assets/game-sounds/you-win-street-fighter-101soundboards.mp3');
+var fightMusicShortSFX = new Audio('./assets/game-sounds/fight music short.mp3');
 
+//youtube player display
+function onYouTubeIframeAPIReady() {
+  player = new YT.Player('player', {
+    height: '390',
+    width: '640',
+    videoId: 'DX5kJ2hYQcQ',
+  });
+}
 
 // -------------------------------------------------------------//
 
 function characterSelect () {
+  //play background music---------------
+  backgroundSFX.play();
     //upon clicking the character pic, the same image is displayed into the selected character box.
     console.log('Button VERY clicked!'); 
     console.log('----------------'); 
+hitSFX.play();
     //get fetched picture and name and show them in the selected box. 
     
 const apiUrl = 'https://gateway.marvel.com/v1/public/characters'
@@ -101,7 +119,8 @@ function fight () {
     //lock in function - CPU chooses their characters. both arrays of comic sales are compared
     function cpuChoice () {
     //from array of characters. [0-20] choose three random ones and display them in the selected boxes.
-    
+    selectedPlayerSFX.play();
+    kombatFightSFX.play();
     }
     
 }

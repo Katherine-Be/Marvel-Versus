@@ -8,12 +8,10 @@ section {
     margin: 0 15% 0 15%;
 }
 
-article {
+section article * figure {
     text-align: center;
-}
-
-#fight {
-    /*use button styler that was shown in class*/
+    background-color: red;
+    /*set css width/height to =thumbnail size*/
 }
 
 ol {
@@ -21,8 +19,21 @@ ol {
     justify-content: space-around;
 }
 
-/*------------------Chris Testing Additions------------------------ */
+aside article * figure { /*changed to be morespecific figure*/
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+    background-color: blue;
+}
 
+/* #fight {
+    /*use button styler that was shown in class*/
+/* } */ 
+
+
+
+/*------------------Chris Testing Additions------------------------ */
+/* 
 body {
     background-color: black;
 }
@@ -66,12 +77,5 @@ margin-top: 10px;
     
 
 
-}
+} */
 /*----------------------------------------------------------------- */
-
-
-figure {
-    width: 100px;
-    height: 100px;
-    background-size: cover;
-}

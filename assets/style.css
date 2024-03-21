@@ -1,6 +1,16 @@
 header { /*will be reformatted once banner image is added*/
+    display: flex;
     background-color: black;
     height: 20vh;
+    justify-content: center;
+}
+
+
+header img {
+    width:50%;
+    height:20vh;
+    object-fit: cover;
+    object-position: 0 45%;
 }
 
 section {

@@ -22,6 +22,26 @@ var fightMusicShortSFX = new Audio('./assets/game-sounds/fight music short.mp3')
 // //youtube player display ---Needs to be implemented to fit in the HTML, Maybe put video in a modal?
 // function onYouTubeIframeAPIReady() {
   
+  player = new YT.Player('player', {
+    height: '390',
+    width: '640',
+    videoId: 'K1imOiVCgYM',
+    playerVars: {
+      'autoplay': 1,
+      'start': 14,
+      'end': 18,
+      'controls': 0,
+    },
+    events: {
+      'onReady': onPlayerReady,
+    }
+  });
+  }
+  function onPlayerReady(event) {
+    console.log(event.target.playVideo().playVideo())
+    player.mute();
+    player.playVideo();
+   }
 //   player = new YT.Player('player', {
 //     height: '390',
 //     width: '640',
@@ -58,7 +78,9 @@ let slot3 = false;
 
 function characterSelect () {
   //play background music---------------
+<<<
   // backgroundSFX.play();
+  
     //upon clicking the character pic, the same image is displayed into the selected character box.
     console.log('Button VERY clicked!'); 
     console.log('----------------'); 

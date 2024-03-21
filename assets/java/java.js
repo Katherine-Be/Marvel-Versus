@@ -78,17 +78,20 @@ let slot3 = false;
 
 function characterSelect () {
   //play background music---------------
+<<<
+  // backgroundSFX.play();
+  
     //upon clicking the character pic, the same image is displayed into the selected character box.
     console.log('Button VERY clicked!'); 
     console.log('----------------'); 
-hitSFX.play();
+    hitSFX.play();
     //get fetched picture and name and show them in the selected box. 
     
 const apiUrl = 'https://gateway.marvel.com/v1/public/characters'
 const hash = '685498cef61d5c0f1571a0d89fb966a0'; //find generator 
 const timestamp = '1';
 const apiKey = 'd4d97531c1e479bbe6e27b6f4139fa7e'; //my public key
-const url = `${apiUrl}?apikey=${apiKey}&ts=${timestamp}&hash=${hash}&name=Gwenpool`;
+const url = `${apiUrl}?apikey=${apiKey}&ts=${timestamp}&hash=${hash}&name=Iron Man`;
 
   //https://gateway.marvel.com/v1/public/characters?apikey=d4d97531c1e479bbe6e27b6f4139fa7e&ts=1&hash=685498cef61d5c0f1571a0d89fb966a0&name=Iron Man
   //data.data.results[0].name.toLowerCase();
@@ -102,24 +105,63 @@ const url = `${apiUrl}?apikey=${apiKey}&ts=${timestamp}&hash=${hash}&name=Gwenpo
 
   }).then(response => response.json())
     .then(data => {
-      console.log(data);
+      // console.log(data);
 
       //Hero Img ----------------------------------------------------------
       const thumbnail = data.data.results[0].thumbnail.path + '.jpg';
-      console.log(thumbnail);
+      // console.log(thumbnail);
       var img = document.createElement('img');
       img.src = thumbnail
       img.setAttribute('id', 'myImage');
-      document.getElementById('characterBox1').appendChild(img);
+
+      if (slot1 === false) {
+        console.log(slot1)
+       
+        document.getElementById('characterBox1').appendChild(img);
+        
+
+      } else if (slot1 === true && slot2 ===false) {
+      
+        console.log('Character goes in slot 2')
+        document.getElementById('characterBox2').appendChild(img);
+
+      
+
+      } else if (slot1 === true && slot2 === true && slot3 ===false) {
+        console.log('slot3 filled!')
+        document.getElementById('characterBox3').appendChild(img);
+
+      }
+      
 
       //Hero Name ----------------------------------------------------------
       const nameofHero = data.data.results[0].name;
       console.log(nameofHero);
 
-      var paragraph = document.getElementById("namePlate");
-      var text = document.createTextNode(nameofHero);
+      if (slot1 === false) {
+       
+        var paragraph = document.getElementById("namePlate1");
+        var text = document.createTextNode(nameofHero);
 
-      paragraph.appendChild(text);
+        paragraph.appendChild(text);
+        
+
+      } else if (slot1 === true && slot2 ===false) {
+      
+        var paragraph = document.getElementById("namePlate2");
+        var text = document.createTextNode(nameofHero);
+
+        paragraph.appendChild(text);
+
+      
+
+      } else if (slot1 === true && slot2 === true && slot3 ===false) {
+        var paragraph = document.getElementById("namePlate3");
+        var text = document.createTextNode(nameofHero);
+
+        paragraph.appendChild(text);
+
+      }
 
       //Hero Power ----------------------------------------------------------
 
@@ -136,6 +178,27 @@ const url = `${apiUrl}?apikey=${apiKey}&ts=${timestamp}&hash=${hash}&name=Gwenpo
         sum += playerPower[i];
 
       console.log(sum);
+
+          //Hero Slots  ---------------------------------------------------------
+
+          if (slot1 === false) {
+            console.log('slot1 filled!')
+            slot1 = true
+            slot2 = false
+            
+
+          } else if (slot1 === true && slot2 ===false) {
+            slot2 = true
+            slot3 = false
+            console.log('slot2 filled!')
+
+          
+
+          } else if (slot1 === true && slot2 === true && slot3 ===false) {
+            slot3 = true; 
+            console.log('slot3 filled!')
+
+          }
 
       //Hero Choice Count ----------------------------------------------------------
 
@@ -181,6 +244,41 @@ function fight() {
     
 }
 
+ //Katherine Code ----------------------------------------------------------
+
+//loop replaces the fetchChoices()function which retrieves the characters individually//
+// fetchMultipleCharacters([
+//   "Iron Man",
+//   "Doctor Strange",
+//   "Wolverine",
+//   "Hulk",
+//   "Spider-Man (Peter Parker)",
+//   "Jean Grey"
+// ]);
+
+// function fetchMultipleCharacters(characters) {
+//   characters.forEach((character, index) => {
+//       fetch(`https://gateway.marvel.com/v1/public/characters?apikey=d4d97531c1e479bbe6e27b6f4139fa7e&ts=1&hash=685498cef61d5c0f1571a0d89fb966a0&name=${encodeURIComponent(character)}`)
+//           .then(res => res.json())
+//           .then(data => {
+//               const nameofHero = data.data.results[0];
+//               const image = nameofHero.thumbnail.path + "." + nameofHero.thumbnail.extension;
+//               const comicTotal = nameofHero.comics.available;
+//               console.log(nameofHero);
+//               console.log(comicTotal);
+//               console.log(image);
+//               if (index < 3) {
+//                   document.querySelector(`#Good${index + 1} figure`).style.backgroundImage = `url(${image})`;
+//               } else {
+//                   document.querySelector(`#Evil${index - 2} figure`).style.backgroundImage = `url(${image})`;
+//               }
+//           });
+//   });
+// }
+
+//Katherine Code ----------------------------------------------------------
+
+//Chris Edits Code ----------------------------------------------------------
 
 
 //loop replaces the fetchChoices()function which retrieves the characters individually//
@@ -198,12 +296,14 @@ function fetchMultipleCharacters(characters) {
       fetch(`https://gateway.marvel.com/v1/public/characters?apikey=d4d97531c1e479bbe6e27b6f4139fa7e&ts=1&hash=685498cef61d5c0f1571a0d89fb966a0&name=${encodeURIComponent(character)}`)
           .then(res => res.json())
           .then(data => {
-              const nameofHero = data.data.results[0];
-              const image = nameofHero.thumbnail.path + "." + nameofHero.thumbnail.extension;
-              const comicTotal = nameofHero.comics.available;
-              console.log(nameofHero);
-              console.log(comicTotal);
-              console.log(image);
+              const hero = data.data.results[0];
+              const nameofHero = data.data.results[0].name;
+              const image = hero.thumbnail.path + "." + hero.thumbnail.extension;
+              const comicTotal = hero.comics.available;
+              console.log('Name: '+nameofHero);
+              console.log('Power: '+comicTotal);
+              console.log('Img URL: '+image);
+              console.log('------------------------------------');
               if (index < 3) {
                   document.querySelector(`#Good${index + 1} figure`).style.backgroundImage = `url(${image})`;
               } else {
@@ -212,3 +312,5 @@ function fetchMultipleCharacters(characters) {
           });
   });
 }
+
+//Chris Edits Code ----------------------------------------------------------

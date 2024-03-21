@@ -9,9 +9,16 @@ section {
 }
 
 section article * figure {
+    width: 125px;
+    height: 125px;
     text-align: center;
     background-color: red;
     /*set css width/height to =thumbnail size*/
+}
+
+#characterBox1, #characterBox2, #characterBox3 {
+    display: flex;
+    justify-content: center;
 }
 
 ol {

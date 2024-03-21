@@ -19,8 +19,8 @@ var defeatSFX= new Audio('./assets/game-sounds/you-lose-101soundboards.mp3');
 var victorySFX = new Audio('./assets/game-sounds/you-win-street-fighter-101soundboards.mp3');
 var fightMusicShortSFX = new Audio('./assets/game-sounds/fight music short.mp3');
 
-//youtube player display
-function onYouTubeIframeAPIReady() {
+// //youtube player display ---Needs to be implemented to fit in the HTML, Maybe put video in a modal?
+// function onYouTubeIframeAPIReady() {
   
   player = new YT.Player('player', {
     height: '390',
@@ -42,6 +42,17 @@ function onYouTubeIframeAPIReady() {
     player.mute();
     player.playVideo();
    }
+//   player = new YT.Player('player', {
+//     height: '390',
+//     width: '640',
+//     videoId: 'K1imOiVCgYM',
+//     autoplay: 1,
+//     startSeconds: 14,
+//     enSeconds: 18,
+//   });
+// }
+
+
 
 
 
@@ -172,3 +183,32 @@ function fight() {
 
 
 
+//loop replaces the fetchChoices()function which retrieves the characters individually//
+fetchMultipleCharacters([
+  "Iron Man",
+  "Doctor Strange",
+  "Wolverine",
+  "Hulk",
+  "Spider-Man (Peter Parker)",
+  "Jean Grey"
+]);
+
+function fetchMultipleCharacters(characters) {
+  characters.forEach((character, index) => {
+      fetch(`https://gateway.marvel.com/v1/public/characters?apikey=d4d97531c1e479bbe6e27b6f4139fa7e&ts=1&hash=685498cef61d5c0f1571a0d89fb966a0&name=${encodeURIComponent(character)}`)
+          .then(res => res.json())
+          .then(data => {
+              const nameofHero = data.data.results[0];
+              const image = nameofHero.thumbnail.path + "." + nameofHero.thumbnail.extension;
+              const comicTotal = nameofHero.comics.available;
+              console.log(nameofHero);
+              console.log(comicTotal);
+              console.log(image);
+              if (index < 3) {
+                  document.querySelector(`#Good${index + 1} figure`).style.backgroundImage = `url(${image})`;
+              } else {
+                  document.querySelector(`#Evil${index - 2} figure`).style.backgroundImage = `url(${image})`;
+              }
+          });
+  });
+}

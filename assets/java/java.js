@@ -26,13 +26,22 @@ function onYouTubeIframeAPIReady() {
     height: '390',
     width: '640',
     videoId: 'K1imOiVCgYM',
-    autoplay: 1,
-    startSeconds: 14,
-    enSeconds: 18,
+    playerVars: {
+      'autoplay': 1,
+      'start': 14,
+      'end': 18,
+      'controls': 0,
+    },
+    events: {
+      'onReady': onPlayerReady,
+    }
   });
-}
-
-
+  }
+  function onPlayerReady(event) {
+    console.log(event.target.playVideo().playVideo())
+    player.mute();
+    player.playVideo();
+   }
 
 
 
@@ -58,7 +67,6 @@ let slot3 = false;
 
 function characterSelect () {
   //play background music---------------
-  backgroundSFX.play();
     //upon clicking the character pic, the same image is displayed into the selected character box.
     console.log('Button VERY clicked!'); 
     console.log('----------------'); 

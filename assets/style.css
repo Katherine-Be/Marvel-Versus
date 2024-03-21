@@ -33,6 +33,13 @@ aside article * figure { /*changed to be morespecific figure*/
     background-color: blue;
 }
 
+#myImage {
+    border: solid black 5px; 
+    width: 200px; 
+    height: 200px;
+    margin-top: 10px; 
+    }
+
 /* #fight {
     /*use button styler that was shown in class*/
 /* } */ 

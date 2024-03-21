@@ -29,7 +29,7 @@
 <!-- Chris's Additions for Testing -->
 
 
-    <header id="banner" href=""></header>
+    <header id="banner"></header>
 
     <main>
         <section id="gameplayField"> <!--maybe apply a background image to this later-->
@@ -37,13 +37,13 @@
             <article class="teams" id="playerTeam">Your Team <!--player's team list-->
                 <ol>
                     <li  id="firstPC">
-                        <figure class="character">PC1</figure> <!--figures to accomodate image insertion-->
+                        <figure id="characterBox1" class="character"></figure> <!--figures to accomodate image insertion-->
                     </li>
                     <li  id="secondPC">
-                        <figure class="character">PC2</figure>
+                        <figure id="characterBox2" class="character"></figure>
                     </li>
                     <li  id="thirdPC">
-                        <figure class="character">PC3</figure>
+                        <figure id="characterBox3" class="character"></figure>
                     </li>
                 </ol>
             </article>
@@ -53,13 +53,13 @@
             <article class="teams" id="computerTeam">Competitors <!--computer's team list, can be moved to after NPC list if wanted to look more like a gameboard-->
                 <ol>
                     <li  id="firstNPC">
-                        <figure class="character">NPC1</figure>
+                        <figure class="character"></figure>
                     </li>
                     <li  id="secondNPC">
-                        <figure class="character">NPC2</figure>
+                        <figure class="character"></figure>
                     </li>
                     <li  id="thirdNPC">
-                        <figure class="character">NPC3</figure>
+                        <figure class="character"></figure>
                     </li>
                 </ol>
             </article>
@@ -70,13 +70,13 @@
             <article id="Heroes">Heroes <!--choices list--> <!--reduced# of selections for minimum viable product-->
                 <ol>
                     <li  id="Good1">
-                        <figure onclick="characterSelect()" class="character">H1</figure> <!--figures to accomodate image insertion--><!--runs function select() to select the character when clicked.-->
+                        <figure onclick="characterSelect(1009368)" class="character"></figure> <!--figures to accomodate image insertion--><!--runs function select() to select the character when clicked.-->
                     </li>
                     <li  id="Good2">
-                        <figure onclick="characterSelect()" class="character">H2</figure>
+                        <figure onclick="characterSelect(1009282)" class="character"></figure>
                     </li>
                     <li  id="Good3">
-                        <figure onclick="characterSelect()" class="character">H3</figure>
+                        <figure onclick="characterSelect(1009718)" class="character"></figure>
                     </li>               
                 </ol>
             </article>
@@ -84,20 +84,20 @@
             <article id="Villains">Villains <!--player's team list--> <!--reduced# of selections for minimum viable product-->
                 <ol>
                     <li  id="Evil1">
-                        <figure onclick="characterSelect()" class="character">E1</figure> <!--figures to accomodate image insertion-->
+                        <figure onclick="characterSelect()" class="character"></figure> <!--figures to accomodate image insertion-->
                     </li>
                     <li  id="Evil2">
-                        <figure onclick="characterSelect()" class="character">E2</figure>
+                        <figure onclick="characterSelect()" class="character"></figure>
                     </li>
                     <li  id="Evil3">
-                        <figure onclick="characterSelect()" class="character">E3</figure>
+                        <figure onclick="characterSelect()" class="character"></figure>
                     </li>                   
                 </ol>
             </article>
             
         </aside>
     </main>
-    <script src="./assets/java/java.js"></script>
+    <script src="./assets/script.js"></script>
     <script src="https://www.youtube.com/iframe_api"></script>
 
 </body>

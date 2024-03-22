@@ -9,6 +9,7 @@
 // var characterSelectbtnEl = document.getElementById('#selectbtn')
 let choiceCount = 0;
 let playerPower = []
+let cpuPower = 0;
 var backgroundSFX = new Audio('./assets/game-sounds/player selection screen.mp3');
 var kombatFightSFX = new Audio('./assets/game-sounds/faceoff sound-fight.mp3')
 var fightMusic = new Audio('assets/game-sounds/fight music.mp3');
@@ -21,7 +22,7 @@ var fightMusicShortSFX = new Audio('./assets/game-sounds/fight music short.mp3')
 
 
 // // //youtube player display ---Needs to be implemented to fit in the HTML, Maybe put video in a modal?
-// // function onYouTubeIframeAPIReady() {//latest push, Nate added parameters to 
+function onYouTubeIframeAPIReady() {
   
   player = new YT.Player('player', {
     height: '390',
@@ -37,7 +38,7 @@ var fightMusicShortSFX = new Audio('./assets/game-sounds/fight music short.mp3')
       'onReady': onPlayerReady,
     }
   });
-  }
+}
   function onPlayerReady(event) {
     console.log(event.target.playVideo().playVideo())
     player.mute();
@@ -52,9 +53,9 @@ let slot2 = false;
 let slot3 = false; 
 // -------------------------------------------------------------//
 
+/*
 function characterSelect () {
   //play background music---------------
-<<<
   // backgroundSFX.play();
   
     //upon clicking the character pic, the same image is displayed into the selected character box.
@@ -155,6 +156,13 @@ const url = `${apiUrl}?apikey=${apiKey}&ts=${timestamp}&hash=${hash}&name=Iron M
 
       console.log(sum);
 
+      //CPU Power ----------------------------------------------------------
+      let cpuPower = 0;
+
+      comicTotal.push(cpuPower);
+      console.log(cpuPower);
+    
+
           //Hero Slots  ---------------------------------------------------------
 
           if (slot1 === false) {
@@ -210,6 +218,9 @@ const url = `${apiUrl}?apikey=${apiKey}&ts=${timestamp}&hash=${hash}&name=Iron M
       kombatFightSFX.play();
     };
 
+
+    */
+
 //       //Hero Choice Count ----------------------------------------------------------
 
 //       choiceCount++;
@@ -243,14 +254,99 @@ const url = `${apiUrl}?apikey=${apiKey}&ts=${timestamp}&hash=${hash}&name=Iron M
 // -------------------------------------------------------------//
 
 
+function populateCharElm(box, character) {
+
+  // // Create and append image to character box
+  var img = document.createElement('img');
+
+  img.src = character.imageUrl;
+  img.setAttribute('data-character-name', character.characterName); // Store character name as a data attribute
+
+  box.appendChild(img);
+
+  box.setAttribute('data-character', character.id);
+
+  box.character = character;
+
+}
+
+
+
+
+
+
 function fight() {
-  //lock in function - CPU chooses their characters. both arrays of comic sales are compared
-  function cpuChoice() {
-    //from array of characters. [0-20] choose three random ones and display them in the selected boxes.
-    
-    selectedPlayerSFX.play();
-    kombatFightSFX.play();
+
+  const allCharacters = JSON.parse(localStorage.getItem('allCharacters'));
+
+  let playerTeamChars = document.querySelectorAll('#playerTeam .character');
+  let computerTeamChars = document.querySelectorAll('#computerTeam .character');
+
+  let playerPower = 0;
+  let computerPower = 0;
+
+  // find power of player chars
+  for (let i = 0; i < playerTeamChars.length; i++)
+  {
+    let playerCharElm = playerTeamChars[i];
+
+    if (!playerCharElm.character)
+    {
+      continue;
     }
+
+    playerPower += playerCharElm.character.comicTotal;
+  }
+
+  // find power of computer car. for
+  for (let i = 0; i < computerTeamChars.length; i++)
+  {
+    let computerCharElm = computerTeamChars[i];
+    
+    computerCharElm.character = allCharacters[Math.floor(Math.random()*allCharacters.length)];
+
+    if (!computerCharElm.character)
+    {
+      continue;
+    }
+
+    computerPower += computerCharElm.character.comicTotal;
+
+    populateCharElm(computerCharElm, computerCharElm.character);
+
+  }
+
+
+
+  console.log('playerPower', playerPower);
+  console.log('computerPower', computerPower);
+
+
+      // //Hero Power ----------------------------------------------------------
+
+      // const comicTotal = data.data.results[0].comics.available;
+      // console.log(comicTotal);
+
+
+      // playerPower.push(comicTotal);
+      // console.log(playerPower);
+
+      // let sum = 0;
+
+      // for (let i = 0; i < playerPower.length; i++)
+      //   sum += playerPower[i];
+
+      // console.log(sum);
+
+
+
+  //lock in function - CPU chooses their characters. both arrays of comic sales are compared
+  // function cpuChoice() {
+  //   //from array of characters. [0-20] choose three random ones and display them in the selected boxes.
+    
+  //   selectedPlayerSFX.play();
+  //   kombatFightSFX.play();
+  //   }
     
 }
 
@@ -307,13 +403,25 @@ function fetchMultipleCharacters(characters) {
       fetch(`https://gateway.marvel.com/v1/public/characters?apikey=d4d97531c1e479bbe6e27b6f4139fa7e&ts=1&hash=685498cef61d5c0f1571a0d89fb966a0&name=${encodeURIComponent(character)}`)
           .then(res => res.json())
           .then(data => {
-              const nameofHero = data.data.results[0];
-              const image = nameofHero.thumbnail.path + "." + nameofHero.thumbnail.extension;
-              const comicTotal = nameofHero.comics.available;
-              const id = nameofHero.id
-              console.log(nameofHero);
-              console.log(comicTotal);
-              console.log(image);
+              // const nameofHero = data.data.results[0];
+              // const image = nameofHero.thumbnail.path + "." + nameofHero.thumbnail.extension;
+              // const comicTotal = nameofHero.comics.available;
+              
+              // console.log(nameofHero);
+              // console.log(comicTotal);
+              // console.log(image);
+              // ======= Chris code change 
+              const hero = data.data.results[0];
+              const nameofHero = data.data.results[0].name;
+              const image = hero.thumbnail.path + "." + hero.thumbnail.extension;
+              const comicTotal = hero.comics.available;
+              const id = hero.id
+              console.log('Name: '+nameofHero);
+              console.log('Power: '+comicTotal);
+              console.log('Img URL: '+image);
+              console.log('Hero ID: '+id);
+              console.log('------------------------------------');
+// >>>>>>> main
 
                             //Puts all of the character stats in the array
                               allCharacters.push({
@@ -329,7 +437,7 @@ function fetchMultipleCharacters(characters) {
                               // Store allCharacters array in local storage
                               localStorage.setItem('allCharacters', JSON.stringify(allCharacters));
                           }
-//======= Chris code change 
+// // ======= Chris code change 
 //               const hero = data.data.results[0];
 //               const nameofHero = data.data.results[0].name;
 //               const image = hero.thumbnail.path + "." + hero.thumbnail.extension;
@@ -338,7 +446,7 @@ function fetchMultipleCharacters(characters) {
 //               console.log('Power: '+comicTotal);
 //               console.log('Img URL: '+image);
 //               console.log('------------------------------------');
-// >>>>>>> main
+// // >>>>>>> main
               if (index < 3) {
                   document.querySelector(`#Good${index + 1} figure`).style.backgroundImage = `url(${image})`;
               } else {
@@ -349,52 +457,127 @@ function fetchMultipleCharacters(characters) {
 
   // Function to retrieve character data from local storage and use it
 function characterSelect(boxNumber) {
+
   // Retrieve character data from local storage
   const allCharacters = JSON.parse(localStorage.getItem('allCharacters'));
+  const character = allCharacters && allCharacters.length ? allCharacters.filter(c => c.id == boxNumber)[0] : null;
 
-  // Check if character data exists
-  if (allCharacters && allCharacters.length > 0) {
-      // Get character for the specified boxNumber
-      // const character = allCharacters[boxNumber - 1]; // Assuming boxNumber starts from 1
-      const character = allCharacters.filter(c => c.id == boxNumber)
-      console.log(character);
-      console.log(boxNumber);
-      // Create and append image to character box
-      var img = document.createElement('img');
-      img.src = character[0].imageUrl;
-      img.setAttribute('data-character-name', character[0].characterName); // Store character name as a data attribute
+  if (!character) return alert('Pick a nother chr.t. this one failed to load..');
 
-      // Append the image to the appropriate box based on boxNumber
-      choiceCount++;
-      console.log(choiceCount);
-      if (choiceCount > 3) { 
-        alert('No choices left!')
-        // slot1 = false;
-        // slot2 = false;
-        // slot3 = false;
-        // choiceCount = 0
-        // console.log('RESET_____');
-        // console.log(slot1);
-        // console.log(slot1);
-        // console.log(slot1);
-        return;
-      }
-      // else (choiceCount < 3)
-      else{
-      const characterBox = document.getElementById(`characterBox${choiceCount}`);
-      characterBox.appendChild(img); 
-      }
-      return;
+  const box = document.querySelector('#playerTeam .character:empty');
+
+  if (!box) return alert('ready to play!');
+
+  // Get character for the specified boxNumber
+  // const character = allCharacters[boxNumber - 1]; // Assuming boxNumber starts from 1
+
+  console.log(character);
+  console.log(boxNumber);
+  console.log(box);
+
+
+  populateCharElm(box, character)
+
+
+
+
+
+
+
+    // // Append the image to the appropriate box based on boxNumber
+    // choiceCount++;
+    // // console.log(choiceCount);
+    // if (choiceCount > 3) { 
+    //   alert('No choices left!')
+    //   // slot1 = false;
+    //   // slot2 = false;
+    //   // slot3 = false;
+    //   // choiceCount = 0
+    //   // console.log('RESET_____');
+    //   // console.log(slot1);
+    //   // console.log(slot1);
+    //   // console.log(slot1);
+    //   return;
+    // }
+
+
+
+
+
+  // // Check if character data exists
+  // if (allCharacters && allCharacters.length > 0) {
+  //     // else (choiceCount < 3)
+  //     else{
+  //     const characterBox = document.getElementById(`characterBox${choiceCount}`);
+  //     characterBox.appendChild(img); 
+  //     }
+  //     // return;
 
 
       // Save selected choice to local storage (if needed)
       // const selectedChoices = JSON.parse(localStorage.getItem('selectedChoices')) || {};
       // selectedChoices[`characterBox${boxNumber}`] = character.characterName;
       // localStorage.setItem('selectedChoices', JSON.stringify(selectedChoices));
-  } else {
-      console.log("No character data found in local storage.");
-  }
-};
+  // } else {
+  //     console.log("No character data found in local storage.");
+  // }
+
+
+/*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //Hero Name ----------------------------------------------------------
+    return console.log(allCharacters);
+
+
+    const nameofHero = data.data.results[0].name;
+    console.log(nameofHero);
+
+    if (slot1 === false) {
+      
+      var paragraph = document.getElementById("namePlate1");
+      var text = document.createTextNode(nameofHero);
+
+      paragraph.appendChild(text);
+      
+
+    } else if (slot1 === true && slot2 ===false) {
+    
+      var paragraph = document.getElementById("namePlate2");
+      var text = document.createTextNode(nameofHero);
+
+      paragraph.appendChild(text);
+
+    
+
+    } else if (slot1 === true && slot2 === true && slot3 ===false) {
+      var paragraph = document.getElementById("namePlate3");
+      var text = document.createTextNode(nameofHero);
+
+      paragraph.appendChild(text);
+
+    }
+  
+  */
+  
+  };
+
+
+
 // }
 // function characterSelect(characters, boxNumber) {
 //   characters.forEach((character, index) => {

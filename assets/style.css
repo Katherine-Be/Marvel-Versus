@@ -50,6 +50,11 @@ aside article * figure { /*changed to be morespecific figure*/
     background-color: blue;
 }
 
+article div {
+    display: flex;
+    justify-content: center;
+}
+
 #myImage {
     border: solid black 5px; 
     width: 200px; 
@@ -57,6 +62,13 @@ aside article * figure { /*changed to be morespecific figure*/
     margin-top: 10px; 
     }
 
+aside{
+    text-align: center;
+}
+
+.space {
+    height: 5px;
+}
 /* #fight {
     /*use button styler that was shown in class*/
 /* } */ 

@@ -26,7 +26,7 @@ section article * figure {
     /*set css width/height to =thumbnail size*/
 }
 
-#characterBox1, #characterBox2, #characterBox3 {
+.character {
     display: flex;
     justify-content: center;
 }

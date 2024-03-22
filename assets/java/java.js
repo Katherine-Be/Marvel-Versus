@@ -316,18 +316,17 @@ function fight() {
 
   }
 
-  if (playerPower > computerPower) {
-    //Code to display YOU WIN modal [ALL modals should have button to refresh page after player clicks them]
+  // if (playerPower > computerPower) {
+  //   //Code to display YOU WIN modal [ALL modals should have button to refresh page after player clicks them]
 
-  }
-  else if (playerPower < computerPower) {
-    //Code to display YOU LOSE modal
-  }
-  else (playerPower == computerPower) {
-    //OPTIONAL tie modal here
+  // }
+  // else if (playerPower < computerPower) {
+  //   //Code to display YOU LOSE modal
+  // }
+  // else (playerPower == computerPower) {
+  //   //OPTIONAL tie modal here
 
-  }
-
+  // }};
 
 
   console.log('playerPower', playerPower);

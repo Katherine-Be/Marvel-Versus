@@ -11,7 +11,14 @@ header img {
     height:20vh;
     object-fit: cover;
     object-position: 0 45%;
+    margin-left: auto;
+    margin-right: auto;
 }
+
+/*instead of cutting the image at smaller screens, the image will shrink*/
+@media screen and (max-width:1220px) {header img {
+    object-position: center ;
+}}
 
 section {
     background-color: #00991f;

@@ -321,7 +321,7 @@ function fight() {
 
   }
 
-  // if (playerPower > computerPower) {
+  if (playerPower > computerPower) {
   //   //Code to display YOU WIN modal [ALL modals should have button to refresh page after player clicks them]
 
 

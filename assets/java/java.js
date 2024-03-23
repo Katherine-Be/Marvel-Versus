@@ -47,7 +47,7 @@ function modalDisplay(videoId,title){
         
     
   }});
-
+}
 
 
 modalDisplay('K1imOiVCgYM',"You Win")
@@ -327,10 +327,10 @@ function fight() {
   else if (playerPower < computerPower) {
     //Code to display YOU LOSE modal
   }
-  else (playerPower == computerPower) {
+  else (playerPower == computerPower) 
     //OPTIONAL tie modal here
 
-  }
+  
 
 
 

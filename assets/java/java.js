@@ -24,10 +24,13 @@ var victorySFX = new Audio('./assets/game-sounds/you-win-street-fighter-101sound
 var fightMusicShortSFX = new Audio('./assets/game-sounds/fight music short.mp3');
 
 //youtube player display
+<<<<<<< HEAD
 function initialModal(){modalDisplay('K1imOiVCgYM',"You Win")};// USED with "<body onload="initialModal()">"" in htm TO GET SOMETHING WITH MODAL TO LOAD ON "PAGE LOAD"-->
 
 
 
+=======
+>>>>>>> parent of b9be0b0 (temporary fix to modal vid on page load)
 
 function modalDisplay(videoId,title){
   var tag = document.createElement('script');

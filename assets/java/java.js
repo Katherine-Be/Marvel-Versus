@@ -20,33 +20,38 @@ var defeatSFX= new Audio('./assets/game-sounds/you-lose-101soundboards.mp3');
 var victorySFX = new Audio('./assets/game-sounds/you-win-street-fighter-101soundboards.mp3');
 var fightMusicShortSFX = new Audio('./assets/game-sounds/fight music short.mp3');
 
+//youtube player display
 
-// // //youtube player display ---Needs to be implemented to fit in the HTML, Maybe put video in a modal?
-function onYouTubeIframeAPIReady() {//latest push, Nate added parameters to 
+
+function modalDisplay(videoId,title){
+  Swal.fire({
+    title: title,
+    html: '<div id="player"></div>',
   
-  player = new YT.Player('player', {
-    height: '390',
-    width: '640',
-    videoId: 'K1imOiVCgYM',
-    playerVars: {
-      'autoplay': 1,
-      'start': 14,
-      'end': 18,
-      'controls': 0,
-    },
-    events: {
-      'onReady': onPlayerReady,
-    }
-  })};
-  
-  function onPlayerReady(event) {
-    console.log(event.target.playVideo().playVideo())
-    player.mute();
-    player.playVideo();
-   }
+    didOpen: () => {
+      //const timer = Swal.getPopup().querySelector("b");
+     
+         new YT.Player('player', {
+          height: '390',
+          width: '640',
+          videoId: videoId,
+          playerVars: {
+            'autoplay': 1,
+            'start': 14,
+            'end': 18,
+            'controls': 0,
+          },
+          events: {
+            //'onReady': onPlayerReady,
+          }
+        });
+        
+    
+  }});
+}
 
 
-
+modalDisplay('K1imOiVCgYM',"You Win")
 
 let slot1 = false; 
 let slot2 = false; 
@@ -319,12 +324,15 @@ function fight() {
   // if (playerPower > computerPower) {
   //   //Code to display YOU WIN modal [ALL modals should have button to refresh page after player clicks them]
 
-  // }
-  // else if (playerPower < computerPower) {
-  //   //Code to display YOU LOSE modal
-  // }
-  // else (playerPower == computerPower) {
-  //   //OPTIONAL tie modal here
+
+  }
+  else if (playerPower < computerPower) {
+    //Code to display YOU LOSE modal
+  }
+  else (playerPower == computerPower) 
+    //OPTIONAL tie modal here
+
+  
 
   // }};
 

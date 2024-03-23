@@ -15,13 +15,13 @@ var kombatFightSFX = new Audio('./assets/game-sounds/faceoff sound-fight.mp3')
 var fightMusic = new Audio('assets/game-sounds/fight music.mp3');
 var hitSFX = new Audio('./assets/game-sounds/hit sound.wav');
 var selectedPlayerSFX = new Audio('./assets/game-sounds/prefaceoff music.wav');
-var winSFX = new Audio('./assets/game-sounds/up notification.wav');
+var winSFX = new Audio('./assets/game-sounds/up notification.wav');//ARE WE USING THESE? OR DO THE CHOSEN VIDEOS HAVE AUDIO?
 var defeatSFX= new Audio('./assets/game-sounds/you-lose-101soundboards.mp3');
 var victorySFX = new Audio('./assets/game-sounds/you-win-street-fighter-101soundboards.mp3');
 var fightMusicShortSFX = new Audio('./assets/game-sounds/fight music short.mp3');
 
 //youtube player display
-function initialModal(){modalDisplay()};// USED with "<body onload="initialModal()">"" in htm TO GET SOMETHING WITH MODAL TO LOAD ON "PAGE LOAD"-->
+function initialModal(){modalDisplay('K1imOiVCgYM',"You Win")};// USED with "<body onload="initialModal()">"" in htm TO GET SOMETHING WITH MODAL TO LOAD ON "PAGE LOAD"-->
 
 
 function modalDisplay(videoId,title){
@@ -34,7 +34,7 @@ function modalDisplay(videoId,title){
      
          new YT.Player('player', {
           height: '390',
-          width: '640',
+          width: '390',
           videoId: videoId,
           playerVars: {
             'autoplay': 1,
@@ -51,7 +51,7 @@ function modalDisplay(videoId,title){
   }});
 }
 
-modalDisplay('K1imOiVCgYM',"You Win")
+modalDisplay('K1imOiVCgYM',"Let's play a game.")
 
 // -------------------------------------------------------------//
 
@@ -322,6 +322,8 @@ function fetchMultipleCharacters(characters) {
 
   // Function to retrieve character data from local storage and use it
 function characterSelect(boxNumber) {
+    backgroundSFX.play();//NEED TO MAKE THIS STOP PLAYING WHEN FIGHT BUTTON IS PRESSED!
+    // backgroundSFX.setVolume(0.1); //<--THIS LINE DOES NOT WORK!!!
 
   // Retrieve character data from local storage
   const allCharacters = JSON.parse(localStorage.getItem('allCharacters'));
@@ -349,6 +351,7 @@ function characterSelect(boxNumber) {
 
 
 function populateCharElm(box, character) {
+  // selectedPlayerSFX.play(); //POKEMON MUSIC AND THIS MAY BE A BIT MUCH PLAYING AT THE SAME TIME, BUT I LOVE THE IDEA OF A SECTION SOUND
 
   // // Create and append image to character box
   var img = document.createElement('img');
@@ -370,7 +373,8 @@ function populateCharElm(box, character) {
 
 
 function fight() {
-
+  if (backgroundSFX.play()) { // Gets background music to stop playing
+    backgroundSFX.pause()};
   const allCharacters = JSON.parse(localStorage.getItem('allCharacters'));
 
   let playerTeamChars = document.querySelectorAll('#playerTeam .character'); //Retrieves all charactr values insidet the #playerTeam html element and stores them as a variable in js
@@ -413,11 +417,10 @@ function fight() {
   console.log(playerPower);
   console.log(computerPower);
   
-  function gameResults(){}
+  function gameResults(){} //!!!!!!!!!!!!!!!!!!!!put function within the last function because playerPower and computerPower arevblock-specific. maybe we can set a var variable to = each and move this function out of the previous one
   if (playerPower > computerPower) {
   console.log("Code to display YOU WIN modal [ALL modals should have button to refresh page after player clicks them");
   modalDisplay('K1imOiVCgYM',"You Win")
-
 
 
   }

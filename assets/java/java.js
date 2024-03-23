@@ -22,6 +22,7 @@ var fightMusicShortSFX = new Audio('./assets/game-sounds/fight music short.mp3')
 
 //youtube player display
 
+
 function modalDisplay(videoId,title){
   Swal.fire({
     title: title,
@@ -283,31 +284,31 @@ function fight() {
 
   const allCharacters = JSON.parse(localStorage.getItem('allCharacters'));
 
-  let playerTeamChars = document.querySelectorAll('#playerTeam .character');
-  let computerTeamChars = document.querySelectorAll('#computerTeam .character');
+  let playerTeamChars = document.querySelectorAll('#playerTeam .character'); //Retrieves all charactr values insidet the #playerTeam html element and stores them as a variable in js
+  let computerTeamChars = document.querySelectorAll('#computerTeam .character'); //same, but for comuterTeam
 
   let playerPower = 0;
   let computerPower = 0;
 
-  // find power of player chars
+  // loop to find the power of each player team character
   for (let i = 0; i < playerTeamChars.length; i++)
   {
     let playerCharElm = playerTeamChars[i];
 
-    if (!playerCharElm.character)
+    if (!playerCharElm.character) //once the loop repeats 3 times (the length of the player team indicated in the conditions), the loop moves on.
     {
       continue;
     }
 
-    playerPower += playerCharElm.character.comicTotal;
+    playerPower += playerCharElm.character.comicTotal; //adds the teams' stats and stores new value in the variale, playerPower
   }
 
-  // find power of computer car. for
+  // loop to find the power of each computer team character
   for (let i = 0; i < computerTeamChars.length; i++)
   {
     let computerCharElm = computerTeamChars[i];
     
-    computerCharElm.character = allCharacters[Math.floor(Math.random()*allCharacters.length)];
+    computerCharElm.character = allCharacters[Math.floor(Math.random()*allCharacters.length)]; //randomizes computer selection from array "allCharacers"
 
     if (!computerCharElm.character)
     {
@@ -316,12 +317,13 @@ function fight() {
 
     computerPower += computerCharElm.character.comicTotal;
 
-    populateCharElm(computerCharElm, computerCharElm.character);
+    populateCharElm(computerCharElm, computerCharElm.character);//populates CPU team images
 
   }
 
-  if (playerPower > computerPower) {
-    //Code to display YOU WIN modal [ALL modals should have button to refresh page after player clicks them]
+  // if (playerPower > computerPower) {
+  //   //Code to display YOU WIN modal [ALL modals should have button to refresh page after player clicks them]
+
 
   }
   else if (playerPower < computerPower) {
@@ -332,6 +334,7 @@ function fight() {
 
   
 
+  // }};
 
 
   console.log('playerPower', playerPower);

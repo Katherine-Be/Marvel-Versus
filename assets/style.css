@@ -1,7 +1,24 @@
 header { /*will be reformatted once banner image is added*/
+    display: flex;
     background-color: black;
     height: 20vh;
+    justify-content: center;
 }
+
+
+header img {
+    width:50%;
+    height:20vh;
+    object-fit: cover;
+    object-position: 0 45%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*instead of cutting the image at smaller screens, the image will shrink*/
+@media screen and (max-width:1220px) {header img {
+    object-position: center ;
+}}
 
 section {
     background-color: #00991f;
@@ -16,7 +33,7 @@ section article * figure {
     /*set css width/height to =thumbnail size*/
 }
 
-#characterBox1, #characterBox2, #characterBox3 {
+.character {
     display: flex;
     justify-content: center;
 }
@@ -36,6 +53,11 @@ aside article * figure { /*changed to be morespecific figure*/
     background-color: blue;
 }
 
+article div {
+    display: flex;
+    justify-content: center;
+}
+
 #myImage {
     border: solid black 5px; 
     width: 200px; 
@@ -43,6 +65,13 @@ aside article * figure { /*changed to be morespecific figure*/
     margin-top: 10px; 
     }
 
+aside{
+    text-align: center;
+}
+
+.space {
+    height: 5px;
+}
 /* #fight {
     /*use button styler that was shown in class*/
 /* } */ 

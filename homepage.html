@@ -14,9 +14,9 @@
 
 <!-- Chris's Additions for Testing -->
 
-<!-- <body>
+ <body>
 
-    <div id="player"></div>
+<!--    <div id="player"></div>
     
 <button onclick="fight"> 2.FIGHT</button>
 <button> 3.Play Again</button>
@@ -31,13 +31,16 @@
 <!-- Chris's Additions for Testing -->
 
 
-    <header id="banner"></header>
+    <header id="banner">
+        <img src="./assets/images/Marvel_Versus_1st_logo.PNG">
+    </header>
 
     <main>
 
         <section id="gameplayField"> <!--maybe apply a background image to this later-->
         
-            <article class="teams" id="playerTeam">Your Team <!--player's team list-->
+            <article class="teams" id="playerTeam"><!--player's team list-->
+                <div>Your Team</div>
                 <ol>
                     <li  id="firstPC">
                         <figure id="characterBox1" class="character"></figure> <!--figures to accomodate image insertion-->
@@ -58,7 +61,7 @@
 
             <button class="button" id="fight" onclick="fight();">Fight!</button>
 
-            <article class="teams" id="computerTeam">Competitors <!--computer's team list, can be moved to after NPC list if wanted to look more like a gameboard-->
+            <article class="teams" id="computerTeam"> <!--computer's team list, can be moved to after NPC list if wanted to look more like a gameboard-->
                 <ol>
                     <li  id="firstNPC">
                         <figure class="character"></figure>
@@ -70,12 +73,14 @@
                         <figure class="character"></figure>
                     </li>
                 </ol>
+                <div>Competitors</div>
             </article>
 
         </section>
 
         <aside id="Characters">Pick Your Team!
-            <article id="Heroes">Heroes <!--choices list--> <!--reduced# of selections for minimum viable product-->
+            <div class="space"></div>
+            <article id="Heroes"> <!--choices list--> <!--reduced# of selections for minimum viable product-->
                 <ol>
                     <li  id="Good1">
                         <figure onclick="characterSelect(1009368)" class="character"></figure> <!--figures to accomodate image insertion--><!--runs function select() to select the character when clicked.-->
@@ -89,7 +94,8 @@
                 </ol>
             </article>
 
-            <article id="Villains">Villains <!--player's team list--> <!--reduced# of selections for minimum viable product-->
+            <article id="Villains"> <!--player's team list--> <!--reduced# of selections for minimum viable product-->
+                <div class="space"></div>
                 <ol>
                     <li  id="Evil1">
                         <figure onclick="characterSelect(1009351)" class="character"></figure> <!--figures to accomodate image insertion-->

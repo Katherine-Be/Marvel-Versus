@@ -46,7 +46,7 @@ ol {
 ------------------Chris Testing Additions------------------------ 
 
 
-aside article * figure { /*changed to be morespecific figure*/
+aside article * figure { /*changed to be morespecific figure
     width: 100px;
     height: 100px;
     background-size: cover;
@@ -133,5 +133,5 @@ figure {
     background-size: cover;
 }
 
-} */
+
 /*----------------------------------------------------------------- */

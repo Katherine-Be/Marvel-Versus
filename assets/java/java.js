@@ -24,6 +24,13 @@ var fightMusicShortSFX = new Audio('./assets/game-sounds/fight music short.mp3')
 
 
 function modalDisplay(videoId,title){
+  var tag = document.createElement('script');
+  tag.src = 'https://www.youtube.com/iframe_api';
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+
+window.onYouTubeIframeAPIReady = function() {
   Swal.fire({
     title: title,
     html: '<div id="player"></div>',
@@ -33,7 +40,7 @@ function modalDisplay(videoId,title){
      
          new YT.Player('player', {
           height: '390',
-          width: '640',
+          width: '450',
           videoId: videoId,
           playerVars: {
             'autoplay': 1,
@@ -41,13 +48,12 @@ function modalDisplay(videoId,title){
             'end': 18,
             'controls': 0,
           },
-          events: {
-            //'onReady': onPlayerReady,
-          }
+        
         });
         
     
   }});
+}
 }
 
 

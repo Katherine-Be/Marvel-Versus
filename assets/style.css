@@ -25,6 +25,9 @@ ol {
     display: flex;
     justify-content: space-around;
 }
+/* 
+------------------Chris Testing Additions------------------------ 
+
 
 aside article * figure { /*changed to be morespecific figure*/
     width: 100px;
@@ -90,6 +93,16 @@ margin-top: 10px;
     color:rgb(255, 255, 255);
     
 
+
+}
+----------------------------------------------------------------- */
+
+
+figure {
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+}
 
 } */
 /*----------------------------------------------------------------- */

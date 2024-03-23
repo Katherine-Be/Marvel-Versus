@@ -21,6 +21,8 @@ var victorySFX = new Audio('./assets/game-sounds/you-win-street-fighter-101sound
 var fightMusicShortSFX = new Audio('./assets/game-sounds/fight music short.mp3');
 
 //youtube player display
+function initialModal(){modalDisplay()};// USED with "<body onload="initialModal()">"" in htm TO GET SOMETHING WITH MODAL TO LOAD ON "PAGE LOAD"-->
+
 
 function modalDisplay(videoId,title){
   Swal.fire({

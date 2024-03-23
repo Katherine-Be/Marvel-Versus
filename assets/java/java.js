@@ -418,7 +418,7 @@ function fight() {
   console.log("Code to display YOU WIN modal [ALL modals should have button to refresh page after player clicks them")
   modalDisplay('K1imOiVCgYM',"You Win")
 
-
+winSFX.play();
 
   }
   else if (playerPower < computerPower) {
@@ -431,7 +431,11 @@ function fight() {
   console.log("OPTIONAL tie modal here")
   modalDisplay('K1imOiVCgYM',"You Tied")
 
-}};
+  
+}
+window.location.reload();
+
+};
 
 
 

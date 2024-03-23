@@ -7,6 +7,9 @@
 // // Play Again - refresh page
 // var selectedCharacter1El = document.getElementById('#characterBox1');
 // var characterSelectbtnEl = document.getElementById('#selectbtn')
+
+
+
 let choiceCount = 0;
 let playerPower = []
 let cpuPower = 0;
@@ -24,17 +27,29 @@ var fightMusicShortSFX = new Audio('./assets/game-sounds/fight music short.mp3')
 function initialModal(){modalDisplay('K1imOiVCgYM',"You Win")};// USED with "<body onload="initialModal()">"" in htm TO GET SOMETHING WITH MODAL TO LOAD ON "PAGE LOAD"-->
 
 
+
+
 function modalDisplay(videoId,title){
+  var tag = document.createElement('script');
+  tag.src = 'https://www.youtube.com/iframe_api';
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+
+window.onYouTubeIframeAPIReady = function() {
   Swal.fire({
     title: title,
     html: '<div id="player"></div>',
   
     didOpen: () => {
       //const timer = Swal.getPopup().querySelector("b");
-     
-         new YT.Player('player', {
+          new YT.Player('player', {
           height: '390',
+<<<<<<< HEAD
           width: '390',
+=======
+          width: '450',
+>>>>>>> parent of e0bf48f (fixed if statement and modals appearing with them)
           videoId: videoId,
           playerVars: {
             'autoplay': 1,
@@ -42,17 +57,24 @@ function modalDisplay(videoId,title){
             'end': 18,
             'controls': 0,
           },
-          events: {
-            //'onReady': onPlayerReady,
-          }
+        
         });
         
     
   }});
 }
+}
 
+<<<<<<< HEAD
 modalDisplay('K1imOiVCgYM',"Let's play a game.")
+=======
+>>>>>>> parent of e0bf48f (fixed if statement and modals appearing with them)
 
+modalDisplay('K1imOiVCgYM',"INTRO")
+
+let slot1 = false; 
+let slot2 = false; 
+let slot3 = false; 
 // -------------------------------------------------------------//
 
 /*
@@ -252,6 +274,162 @@ const url = `${apiUrl}?apikey=${apiKey}&ts=${timestamp}&hash=${hash}&name=Iron M
 
 
 // };
+
+// -------------------------------------------------------------//
+
+
+function populateCharElm(box, character) {
+
+  // // Create and append image to character box
+  var img = document.createElement('img');
+
+  img.src = character.imageUrl;
+  img.setAttribute('data-character-name', character.characterName); // Store character name as a data attribute
+
+  box.appendChild(img);
+
+  box.setAttribute('data-character', character.id);
+
+  box.character = character;
+
+}
+
+
+function fight() {
+
+  const allCharacters = JSON.parse(localStorage.getItem('allCharacters'));
+
+  let playerTeamChars = document.querySelectorAll('#playerTeam .character'); //Retrieves all character values inside the #playerTeam html element and stores them as a variable in js
+  let computerTeamChars = document.querySelectorAll('#computerTeam .character'); //same, but for computerTeam
+
+  let playerPower = 0;
+  let computerPower = 0;
+
+  // loop to find the power of each player team character
+  for (let i = 0; i < playerTeamChars.length; i++)
+  {
+
+    let playerCharElm = playerTeamChars[i];
+
+    if (!playerCharElm.character) //once the loop repeats 3 times (the length of the player team indicated in the conditions), the loop moves on.
+    {
+      continue;
+    }
+
+    playerPower += playerCharElm.character.comicTotal; //adds the teams' stats and stores new value in the variable, playerPower
+  }
+  
+
+  // loop to find the power of each computer team character
+  for (let i = 0; i < computerTeamChars.length; i++)
+  {
+    
+    let computerCharElm = computerTeamChars[i];
+    
+    computerCharElm.character = allCharacters[Math.floor(Math.random()*allCharacters.length)]; //randomizes computer selection from array "allCharacers"
+
+    if (!computerCharElm.character)
+    {
+      continue;
+    }
+
+    computerPower += computerCharElm.character.comicTotal;
+
+    populateCharElm(computerCharElm, computerCharElm.character);//populates CPU team images
+
+  }
+
+
+    if (playerPower > computerPower) {
+  //   //Code to display YOU WIN modal [ALL modals should have button to refresh page after player clicks them]
+    modalDisplay('K1imOiVCgYM',"You Win")
+  }
+  else if (playerPower < computerPower) {
+    //Code to display YOU LOSE modal
+    modalDisplay('K1imOiVCgYM',"You Lose! If you disagree with the result, please complain on reddit.")
+  }
+
+  else {
+    //OPTIONAL tie modal here
+    modalDisplay('K1imOiVCgYM',"You Tied!")
+  }
+
+    console.log('playerPower: ', playerPower);
+    console.log('computerPower: ', computerPower);
+
+  };
+
+
+
+
+
+
+
+      // //Hero Power ----------------------------------------------------------
+
+      // const comicTotal = data.data.results[0].comics.available;
+      // console.log(comicTotal);
+
+
+      // playerPower.push(comicTotal);
+      // console.log(playerPower);
+
+      // let sum = 0;
+
+      // for (let i = 0; i < playerPower.length; i++)
+      //   sum += playerPower[i];
+
+      // console.log(sum);
+
+
+
+  //lock in function - CPU chooses their characters. both arrays of comic sales are compared
+  // function cpuChoice() {
+  //   //from array of characters. [0-20] choose three random ones and display them in the selected boxes.
+    
+  //   selectedPlayerSFX.play();
+  //   kombatFightSFX.play();
+  //   }
+    
+
+
+ //Katherine Code ----------------------------------------------------------
+
+//loop replaces the fetchChoices()function which retrieves the characters individually//
+// fetchMultipleCharacters([
+//   "Iron Man",
+//   "Doctor Strange",
+//   "Wolverine",
+//   "Hulk",
+//   "Spider-Man (Peter Parker)",
+//   "Jean Grey"
+// ]);
+
+// function fetchMultipleCharacters(characters) {
+//   characters.forEach((character, index) => {
+//       fetch(`https://gateway.marvel.com/v1/public/characters?apikey=d4d97531c1e479bbe6e27b6f4139fa7e&ts=1&hash=685498cef61d5c0f1571a0d89fb966a0&name=${encodeURIComponent(character)}`)
+//           .then(res => res.json())
+//           .then(data => {
+//               const nameofHero = data.data.results[0];
+//               const image = nameofHero.thumbnail.path + "." + nameofHero.thumbnail.extension;
+//               const comicTotal = nameofHero.comics.available;
+//               console.log(nameofHero);
+//               console.log(comicTotal);
+//               console.log(image);
+//               if (index < 3) {
+//                   document.querySelector(`#Good${index + 1} figure`).style.backgroundImage = `url(${image})`;
+//               } else {
+//                   document.querySelector(`#Evil${index - 2} figure`).style.backgroundImage = `url(${image})`;
+//               }
+//           });
+//   });
+// }
+
+//Katherine Code ----------------------------------------------------------
+
+//Chris Edits Code ----------------------------------------------------------
+
+
 //loop replaces the fetchChoices()function which retrieves the characters individually//
 fetchMultipleCharacters([
   "Iron Man",
@@ -329,7 +507,7 @@ function characterSelect(boxNumber) {
   const allCharacters = JSON.parse(localStorage.getItem('allCharacters'));
   const character = allCharacters && allCharacters.length ? allCharacters.filter(c => c.id == boxNumber)[0] : null;
 
-  if (!character) return alert('Pick a nother chr.t. this one failed to load..');
+  if (!character) return alert('Pick another chr.t. this one failed to load..');
 
   const box = document.querySelector('#playerTeam .character:empty');
 
@@ -606,6 +784,7 @@ function fight() {
     }
   
   */
+  
   
 
 

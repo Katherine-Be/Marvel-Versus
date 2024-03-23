@@ -21,7 +21,7 @@ var victorySFX = new Audio('./assets/game-sounds/you-win-street-fighter-101sound
 var fightMusicShortSFX = new Audio('./assets/game-sounds/fight music short.mp3');
 
 //youtube player display
-function initialModal(){modalDisplay()};// USED with "<body onload="initialModal()">"" in htm TO GET SOMETHING WITH MODAL TO LOAD ON "PAGE LOAD"-->
+function initialModal(){modalDisplay('K1imOiVCgYM',"Let's play a game")};// USED with "<body onload="initialModal()">"" in htm TO GET SOMETHING WITH MODAL TO LOAD ON "PAGE LOAD"-->
 
 
 function modalDisplay(videoId,title){
@@ -34,7 +34,7 @@ function modalDisplay(videoId,title){
      
          new YT.Player('player', {
           height: '390',
-          width: '640',
+          width: '390',
           videoId: videoId,
           playerVars: {
             'autoplay': 1,
@@ -413,25 +413,25 @@ function fight() {
   console.log(playerPower);
   console.log(computerPower);
   
-  function gameResults(){}
+
   if (playerPower > computerPower) {
-  console.log("Code to display YOU WIN modal [ALL modals should have button to refresh page after player clicks them");
+  console.log("Code to display YOU WIN modal [ALL modals should have button to refresh page after player clicks them")
   modalDisplay('K1imOiVCgYM',"You Win")
 
 
 
   }
   else if (playerPower < computerPower) {
-    console.log("Code to display YOU LOSE modal");
-    modalDisplay('K1imOiVCgYM',"You Win")
+    console.log("Code to display YOU LOSE modal")
+    modalDisplay('K1imOiVCgYM',"You Lose")
 
   }
 
-  else if (playerPower == computerPower)
-  console.log("OPTIONAL tie modal here");
-  modalDisplay('K1imOiVCgYM',"You Win")
+  else if (playerPower == computerPower) {
+  console.log("OPTIONAL tie modal here")
+  modalDisplay('K1imOiVCgYM',"You Tied")
 
-};
+}};
 
 
 

@@ -329,12 +329,14 @@ function fight() {
   else if (playerPower < computerPower) {
     //Code to display YOU LOSE modal
   }
-  else (playerPower == computerPower) 
+
+  else (playerPower == computerPower)
     //OPTIONAL tie modal here
 
   
 
   // }};
+
 
 
   console.log('playerPower', playerPower);

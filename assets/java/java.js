@@ -20,33 +20,38 @@ var defeatSFX= new Audio('./assets/game-sounds/you-lose-101soundboards.mp3');
 var victorySFX = new Audio('./assets/game-sounds/you-win-street-fighter-101soundboards.mp3');
 var fightMusicShortSFX = new Audio('./assets/game-sounds/fight music short.mp3');
 
+//youtube player display
 
-// // //youtube player display ---Needs to be implemented to fit in the HTML, Maybe put video in a modal?
-function onYouTubeIframeAPIReady() {
+
+function modalDisplay(videoId,title){
+  Swal.fire({
+    title: title,
+    html: '<div id="player"></div>',
   
-  player = new YT.Player('player', {
-    height: '390',
-    width: '640',
-    videoId: 'K1imOiVCgYM',
-    playerVars: {
-      'autoplay': 1,
-      'start': 14,
-      'end': 18,
-      'controls': 0,
-    },
-    events: {
-      'onReady': onPlayerReady,
-    }
-  });
+    didOpen: () => {
+      //const timer = Swal.getPopup().querySelector("b");
+     
+         new YT.Player('player', {
+          height: '390',
+          width: '640',
+          videoId: videoId,
+          playerVars: {
+            'autoplay': 1,
+            'start': 14,
+            'end': 18,
+            'controls': 0,
+          },
+          events: {
+            //'onReady': onPlayerReady,
+          }
+        });
+        
+    
+  }});
 }
-  function onPlayerReady(event) {
-    console.log(event.target.playVideo().playVideo())
-    player.mute();
-    player.playVideo();
-   }
 
 
-
+modalDisplay('K1imOiVCgYM',"You Win")
 
 let slot1 = false; 
 let slot2 = false; 
@@ -279,31 +284,31 @@ function fight() {
 
   const allCharacters = JSON.parse(localStorage.getItem('allCharacters'));
 
-  let playerTeamChars = document.querySelectorAll('#playerTeam .character');
-  let computerTeamChars = document.querySelectorAll('#computerTeam .character');
+  let playerTeamChars = document.querySelectorAll('#playerTeam .character'); //Retrieves all charactr values insidet the #playerTeam html element and stores them as a variable in js
+  let computerTeamChars = document.querySelectorAll('#computerTeam .character'); //same, but for comuterTeam
 
   let playerPower = 0;
   let computerPower = 0;
 
-  // find power of player chars
+  // loop to find the power of each player team character
   for (let i = 0; i < playerTeamChars.length; i++)
   {
     let playerCharElm = playerTeamChars[i];
 
-    if (!playerCharElm.character)
+    if (!playerCharElm.character) //once the loop repeats 3 times (the length of the player team indicated in the conditions), the loop moves on.
     {
       continue;
     }
 
-    playerPower += playerCharElm.character.comicTotal;
+    playerPower += playerCharElm.character.comicTotal; //adds the teams' stats and stores new value in the variale, playerPower
   }
 
-  // find power of computer car. for
+  // loop to find the power of each computer team character
   for (let i = 0; i < computerTeamChars.length; i++)
   {
     let computerCharElm = computerTeamChars[i];
     
-    computerCharElm.character = allCharacters[Math.floor(Math.random()*allCharacters.length)];
+    computerCharElm.character = allCharacters[Math.floor(Math.random()*allCharacters.length)]; //randomizes computer selection from array "allCharacers"
 
     if (!computerCharElm.character)
     {
@@ -312,19 +317,26 @@ function fight() {
 
     computerPower += computerCharElm.character.comicTotal;
 
-    populateCharElm(computerCharElm, computerCharElm.character);
+    populateCharElm(computerCharElm, computerCharElm.character);//populates CPU team images
 
   }
 
-  if (playerPower > computerPower) {
-    //Code to display YOU WIN modal [ALL modals should have button to refresh page after player clicks them]
+  // if (playerPower > computerPower) {
+  //   //Code to display YOU WIN modal [ALL modals should have button to refresh page after player clicks them]
+
 
   }
   else if (playerPower < computerPower) {
     //Code to display YOU LOSE modal
   }
+
   else (playerPower == computerPower)
     //OPTIONAL tie modal here
+
+  
+
+  // }};
+
 
 
   console.log('playerPower', playerPower);

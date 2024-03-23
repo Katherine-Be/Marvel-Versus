@@ -7,6 +7,9 @@
 // // Play Again - refresh page
 // var selectedCharacter1El = document.getElementById('#characterBox1');
 // var characterSelectbtnEl = document.getElementById('#selectbtn')
+
+
+
 let choiceCount = 0;
 let playerPower = []
 let cpuPower = 0;
@@ -23,6 +26,7 @@ var fightMusicShortSFX = new Audio('./assets/game-sounds/fight music short.mp3')
 //youtube player display
 
 
+
 function modalDisplay(videoId,title){
   Swal.fire({
     title: title,
@@ -30,8 +34,7 @@ function modalDisplay(videoId,title){
   
     didOpen: () => {
       //const timer = Swal.getPopup().querySelector("b");
-     
-         new YT.Player('player', {
+          new YT.Player('player', {
           height: '390',
           width: '640',
           videoId: videoId,
@@ -51,7 +54,7 @@ function modalDisplay(videoId,title){
 }
 
 
-modalDisplay('K1imOiVCgYM',"You Win")
+modalDisplay('K1imOiVCgYM',"INTRO")
 
 let slot1 = false; 
 let slot2 = false; 
@@ -276,16 +279,12 @@ function populateCharElm(box, character) {
 }
 
 
-
-
-
-
 function fight() {
 
   const allCharacters = JSON.parse(localStorage.getItem('allCharacters'));
 
-  let playerTeamChars = document.querySelectorAll('#playerTeam .character'); //Retrieves all charactr values insidet the #playerTeam html element and stores them as a variable in js
-  let computerTeamChars = document.querySelectorAll('#computerTeam .character'); //same, but for comuterTeam
+  let playerTeamChars = document.querySelectorAll('#playerTeam .character'); //Retrieves all character values inside the #playerTeam html element and stores them as a variable in js
+  let computerTeamChars = document.querySelectorAll('#computerTeam .character'); //same, but for computerTeam
 
   let playerPower = 0;
   let computerPower = 0;
@@ -293,6 +292,7 @@ function fight() {
   // loop to find the power of each player team character
   for (let i = 0; i < playerTeamChars.length; i++)
   {
+
     let playerCharElm = playerTeamChars[i];
 
     if (!playerCharElm.character) //once the loop repeats 3 times (the length of the player team indicated in the conditions), the loop moves on.
@@ -300,12 +300,14 @@ function fight() {
       continue;
     }
 
-    playerPower += playerCharElm.character.comicTotal; //adds the teams' stats and stores new value in the variale, playerPower
+    playerPower += playerCharElm.character.comicTotal; //adds the teams' stats and stores new value in the variable, playerPower
   }
+  
 
   // loop to find the power of each computer team character
   for (let i = 0; i < computerTeamChars.length; i++)
   {
+    
     let computerCharElm = computerTeamChars[i];
     
     computerCharElm.character = allCharacters[Math.floor(Math.random()*allCharacters.length)]; //randomizes computer selection from array "allCharacers"
@@ -321,26 +323,30 @@ function fight() {
 
   }
 
-  if (playerPower > computerPower) {
+
+    if (playerPower > computerPower) {
   //   //Code to display YOU WIN modal [ALL modals should have button to refresh page after player clicks them]
-
-
+    modalDisplay('K1imOiVCgYM',"You Win")
   }
   else if (playerPower < computerPower) {
     //Code to display YOU LOSE modal
+    modalDisplay('K1imOiVCgYM',"You Lose! If you disagree with the result, please complain on reddit.")
   }
 
-  else (playerPower == computerPower)
+  else {
     //OPTIONAL tie modal here
+    modalDisplay('K1imOiVCgYM',"You Tied!")
+  }
 
-  
+    console.log('playerPower: ', playerPower);
+    console.log('computerPower: ', computerPower);
 
-  // }};
+  };
 
 
 
-  console.log('playerPower', playerPower);
-  console.log('computerPower', computerPower);
+
+
 
 
       // //Hero Power ----------------------------------------------------------
@@ -369,7 +375,7 @@ function fight() {
   //   kombatFightSFX.play();
   //   }
     
-}
+
 
  //Katherine Code ----------------------------------------------------------
 
@@ -483,7 +489,7 @@ function characterSelect(boxNumber) {
   const allCharacters = JSON.parse(localStorage.getItem('allCharacters'));
   const character = allCharacters && allCharacters.length ? allCharacters.filter(c => c.id == boxNumber)[0] : null;
 
-  if (!character) return alert('Pick a nother chr.t. this one failed to load..');
+  if (!character) return alert('Pick another chr.t. this one failed to load..');
 
   const box = document.querySelector('#playerTeam .character:empty');
 

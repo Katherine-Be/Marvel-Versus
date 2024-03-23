@@ -1,147 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Marvel Versus</title>
+    <link rel="stylesheet" href="./assets/reset.css" />
+    <link rel="stylesheet" href="./assets/style.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Marvel Versus</title>
-  <link rel="stylesheet" href="./assets/reset.css">
-  <link rel="stylesheet" href="./assets/style.css">
-</head>
+  <!-- Chris's Additions for Testing -->
 
+  <body>
+    <button onclick="fight">2.FIGHT</button>
+    <button>3.Play Again</button>
 
-<!-- Chris's Additions for Testing -->
+    <div id="characterBox1" class="selectedCharacter">Selected Character</div>
+    <h1 id="namePlate"></h1>
+    <div class="cpuSelected">CPU</div>
+    <div id="characterSelect" class="characterSelect">
+      Iron Man
+      <button id="#selectbtn" onclick="characterSelect()">
+        1. Character Select
+      </button>
+    </div>
 
-<body>
-
-    <div id="player"></div>
-    
-<button onclick="fight"> 2.FIGHT</button>
-<button> 3.Play Again</button>
-
-<div id="characterBox1" class="selectedCharacter">Selected Character</div>
-<h1 id="namePlate"></h1>
-<div class="cpuSelected">CPU</div>
-<div id="characterSelect" class="characterSelect">Iron Man
-  <button id=#selectbtn onclick="characterSelect()">1. Character Select</button>
-</div>
-
-<!-- Chris's Additions for Testing -->
-
+    <!-- Chris's Additions for Testing -->
 
     <header id="banner" href=""></header>
 
     <main>
-        <section id="gameplayField"> <!--maybe apply a background image to this later-->
-        
-            <article class="teams" id="playerTeam">Your Team <!--player's team list-->
-                <ol>
-                    <li  id="firstPC">
-                        <figure class="character">PC1</figure> <!--figures to accomodate image insertion-->
-                    </li>
-                    <li  id="secondPC">
-                        <figure class="character">PC2</figure>
-                    </li>
-                    <li  id="thirdPC">
-                        <figure class="character">PC3</figure>
-                    </li>
-                </ol>
-            </article>
+      <section id="gameplayField">
+        <!--maybe apply a background image to this later-->
 
-            <button class="button" id="fight">Fight!</button>
+        <article class="teams" id="playerTeam">
+          Your Team
+          <!--player's team list-->
+          <ol>
+            <li id="firstPC">
+              <figure class="character">PC1</figure>
+              <!--figures to accomodate image insertion-->
+            </li>
+            <li id="secondPC">
+              <figure class="character">PC2</figure>
+            </li>
+            <li id="thirdPC">
+              <figure class="character">PC3</figure>
+            </li>
+          </ol>
+        </article>
 
-            <article class="teams" id="computerTeam">Competitors <!--computer's team list, can be moved to after NPC list if wanted to look more like a gameboard-->
-                <ol>
-                    <li  id="firstNPC">
-                        <figure class="character">NPC1</figure>
-                    </li>
-                    <li  id="secondNPC">
-                        <figure class="character">NPC2</figure>
-                    </li>
-                    <li  id="thirdNPC">
-                        <figure class="character">NPC3</figure>
-                    </li>
-                </ol>
-            </article>
+        <button class="button" id="fight">Fight!</button>
 
-        </section>
+        <article class="teams" id="computerTeam">
+          Competitors
+          <!--computer's team list, can be moved to after NPC list if wanted to look more like a gameboard-->
+          <ol>
+            <li id="firstNPC">
+              <figure class="character">NPC1</figure>
+            </li>
+            <li id="secondNPC">
+              <figure class="character">NPC2</figure>
+            </li>
+            <li id="thirdNPC">
+              <figure class="character">NPC3</figure>
+            </li>
+          </ol>
+        </article>
+      </section>
 
-        <aside id="Characters">Pick Your Team!
-            <article id="Heroes">Heroes <!--player's team list-->
-                <ol>
-                    <li  id="Good1">
-                        <figure class="character">H1</figure> <!--figures to accomodate image insertion-->
-                    </li>
-                    <li  id="Good2">
-                        <figure class="character">H2</figure>
-                    </li>
-                    <li  id="Good3">
-                        <figure class="character">H3</figure>
-                    </li>
-                    <li  id="Good4">
-                        <figure class="character">H4</figure>
-                    </li>
-                    <li  id="Good5">
-                        <figure class="character">H5</figure>
-                    </li>
-                    <li  id="Good6">
-                        <figure class="character">H6</figure>
-                    </li>
-                    <li  id="Good7">
-                        <figure class="character">H7</figure>
-                    </li>
-                    <li  id="Good8">
-                        <figure class="character">H8</figure>
-                    </li>
-                    <li  id="Good9">
-                        <figure class="character">H9</figure>
-                    </li>
-                    <li  id="Good10">
-                        <figure class="character">H10</figure>
-                    </li>
-                    
-                </ol>
-            </article>
+      <aside id="Characters">
+        Pick Your Team!
+        <article id="Heroes">
+          Heroes
+          <!--player's team list-->
+          <ol>
+            <li id="Good1">
+              <figure class="character">H1</figure>
+              <!--figures to accomodate image insertion-->
+            </li>
+            <li id="Good2">
+              <figure class="character">H2</figure>
+            </li>
+            <li id="Good3">
+              <figure class="character">H3</figure>
+            </li>
+            <li id="Good4">
+              <figure class="character">H4</figure>
+            </li>
+            <li id="Good5">
+              <figure class="character">H5</figure>
+            </li>
+            <li id="Good6">
+              <figure class="character">H6</figure>
+            </li>
+            <li id="Good7">
+              <figure class="character">H7</figure>
+            </li>
+            <li id="Good8">
+              <figure class="character">H8</figure>
+            </li>
+            <li id="Good9">
+              <figure class="character">H9</figure>
+            </li>
+            <li id="Good10">
+              <figure class="character">H10</figure>
+            </li>
+          </ol>
+        </article>
 
-            <article id="Villains">Villains <!--player's team list-->
-                <ol>
-                    <li  id="Evil1">
-                        <figure class="character">E1</figure> <!--figures to accomodate image insertion-->
-                    </li>
-                    <li  id="Evil2">
-                        <figure class="character">E2</figure>
-                    </li>
-                    <li  id="Evil3">
-                        <figure class="character">E3</figure>
-                    </li>
-                    <li  id="Evil4">
-                        <figure class="character">E4</figure>
-                    </li>
-                    <li  id="Evil5">
-                        <figure class="character">E5</figure>
-                    </li>
-                    <li  id="Evil6">
-                        <figure class="character">E6</figure>
-                    </li>
-                    <li  id="Evil7">
-                        <figure class="character">E7</figure>
-                    </li>
-                    <li  id="Evil8">
-                        <figure class="character">E8</figure>
-                    </li>
-                    <li  id="Evil9">
-                        <figure class="character">EH9</figure>
-                    </li>
-                    <li  id="Evil10">
-                        <figure class="character">E10</figure>
-                    </li>
-                    
-                </ol>
-            </article>
-            
-        </aside>
+        <article id="Villains">
+          Villains
+          <!--player's team list-->
+          <ol>
+            <li id="Evil1">
+              <figure class="character">E1</figure>
+              <!--figures to accomodate image insertion-->
+            </li>
+            <li id="Evil2">
+              <figure class="character">E2</figure>
+            </li>
+            <li id="Evil3">
+              <figure class="character">E3</figure>
+            </li>
+            <li id="Evil4">
+              <figure class="character">E4</figure>
+            </li>
+            <li id="Evil5">
+              <figure class="character">E5</figure>
+            </li>
+            <li id="Evil6">
+              <figure class="character">E6</figure>
+            </li>
+            <li id="Evil7">
+              <figure class="character">E7</figure>
+            </li>
+            <li id="Evil8">
+              <figure class="character">E8</figure>
+            </li>
+            <li id="Evil9">
+              <figure class="character">EH9</figure>
+            </li>
+            <li id="Evil10">
+              <figure class="character">E10</figure>
+            </li>
+          </ol>
+        </article>
+      </aside>
     </main>
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="./assets/java/java.js"></script>
-    <script src="//www.youtube.com/iframe_api"></script>
-
-</body>
+  </body>
+</html>

@@ -20,8 +20,8 @@ ol {
     display: flex;
     justify-content: space-around;
 }
-
-/*------------------Chris Testing Additions------------------------ */
+/* 
+------------------Chris Testing Additions------------------------ 
 
 body {
     background-color: black;
@@ -67,7 +67,7 @@ margin-top: 10px;
 
 
 }
-/*----------------------------------------------------------------- */
+----------------------------------------------------------------- */
 
 
 figure {

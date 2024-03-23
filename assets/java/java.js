@@ -20,18 +20,36 @@ var victorySFX = new Audio('./assets/game-sounds/you-win-street-fighter-101sound
 var fightMusicShortSFX = new Audio('./assets/game-sounds/fight music short.mp3');
 
 //youtube player display
-function onYouTubeIframeAPIReady() {
+
+function modalDisplay(videoId,title){
+  Swal.fire({
+    title: title,
+    html: '<div id="player"></div>',
   
-  player = new YT.Player('player', {
-    height: '390',
-    width: '640',
-    videoId: 'K1imOiVCgYM',
-    autoplay: 1,
-    startSeconds: 14,
-    enSeconds: 18,
-  });
+    didOpen: () => {
+      //const timer = Swal.getPopup().querySelector("b");
+     
+         new YT.Player('player', {
+          height: '390',
+          width: '640',
+          videoId: videoId,
+          playerVars: {
+            'autoplay': 1,
+            'start': 14,
+            'end': 18,
+            'controls': 0,
+          },
+          events: {
+            //'onReady': onPlayerReady,
+          }
+        });
+        
+    
+  }});
+
 }
 
+modalDisplay('K1imOiVCgYM',"You Win")
 // -------------------------------------------------------------//
 
 function characterSelect () {

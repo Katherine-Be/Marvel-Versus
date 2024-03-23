@@ -45,11 +45,8 @@ window.onYouTubeIframeAPIReady = function() {
       //const timer = Swal.getPopup().querySelector("b");
           new YT.Player('player', {
           height: '390',
-<<<<<<< HEAD
           width: '390',
-=======
           width: '450',
->>>>>>> parent of e0bf48f (fixed if statement and modals appearing with them)
           videoId: videoId,
           playerVars: {
             'autoplay': 1,
@@ -65,11 +62,7 @@ window.onYouTubeIframeAPIReady = function() {
 }
 }
 
-<<<<<<< HEAD
 modalDisplay('K1imOiVCgYM',"Let's play a game.")
-=======
->>>>>>> parent of e0bf48f (fixed if statement and modals appearing with them)
-
 modalDisplay('K1imOiVCgYM',"INTRO")
 
 let slot1 = false; 

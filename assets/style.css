@@ -8,12 +8,17 @@ section {
     margin: 0 15% 0 15%;
 }
 
-article {
+section article * figure {
+    width: 125px;
+    height: 125px;
     text-align: center;
+    background-color: red;
+    /*set css width/height to =thumbnail size*/
 }
 
-#fight {
-    /*use button styler that was shown in class*/
+#characterBox1, #characterBox2, #characterBox3 {
+    display: flex;
+    justify-content: center;
 }
 
 ol {
@@ -23,6 +28,29 @@ ol {
 /* 
 ------------------Chris Testing Additions------------------------ 
 
+
+aside article * figure { /*changed to be morespecific figure*/
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+    background-color: blue;
+}
+
+#myImage {
+    border: solid black 5px; 
+    width: 200px; 
+    height: 200px;
+    margin-top: 10px; 
+    }
+
+/* #fight {
+    /*use button styler that was shown in class*/
+/* } */ 
+
+
+
+/*------------------Chris Testing Additions------------------------ */
+/* 
 body {
     background-color: black;
 }
@@ -75,3 +103,6 @@ figure {
     height: 100px;
     background-size: cover;
 }
+
+} */
+/*----------------------------------------------------------------- */

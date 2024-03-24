@@ -22,10 +22,10 @@ var fightMusicShortSFX = new Audio('./assets/game-sounds/fight music short.mp3')
 var tieSFX = new Audio('./assets/game-sounds/tie-101soundboards.mp3')
 
 //youtube player display
-function initialModal(){modalDisplay('K1imOiVCgYM',"Let's play a game")};// USED with "<body onload="initialModal()">"" in htm TO GET SOMETHING WITH MODAL TO LOAD ON "PAGE LOAD"-->
+function initialModal(){modalDisplay('K1imOiVCgYM',"Let's play a game",14,18)};// USED with "<body onload="initialModal()">"" in htm TO GET SOMETHING WITH MODAL TO LOAD ON "PAGE LOAD"-->
 
 
-function modalDisplay(videoId,title){
+function modalDisplay(videoId,title,start,end){
   Swal.fire({
     title: title,
     html: '<div id="player"></div>',
@@ -39,8 +39,8 @@ function modalDisplay(videoId,title){
           videoId: videoId,
           playerVars: {
             'autoplay': 1,
-            'start': 14,
-            'end': 18,
+            'start': start,
+            'end': end,
             'controls': 0,
           },
           events: {
@@ -52,7 +52,7 @@ function modalDisplay(videoId,title){
   }});
 }
 
-modalDisplay('K1imOiVCgYM',"You Win")
+
 
 // -------------------------------------------------------------//
 
@@ -417,14 +417,14 @@ function fight() {
 
   if (playerPower > computerPower) {
   console.log("Code to display YOU WIN modal [ALL modals should have button to refresh page after player clicks them")
-  modalDisplay('K1imOiVCgYM',"You Win")
+  modalDisplay('rrGMENN1iaY',"You Win",44,53)
 
 winSFX.play();
 
   }
   else if (playerPower < computerPower) {
     console.log("Code to display YOU LOSE modal")
-    modalDisplay('K1imOiVCgYM',"You Lose")
+    modalDisplay('JVy-6GChSrA',"You Lose",23,32)
 
    defeatSFX.play();
 
@@ -432,7 +432,7 @@ winSFX.play();
 
   else if (playerPower == computerPower) {
   console.log("OPTIONAL tie modal here")
-  modalDisplay('K1imOiVCgYM',"You Tied")
+  modalDisplay('rrGMENN1iaY',"You Tied",43,53)
 
   tieSFX.play();
 }};

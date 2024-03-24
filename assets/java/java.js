@@ -19,6 +19,7 @@ var winSFX = new Audio('./assets/game-sounds/up notification.wav');
 var defeatSFX= new Audio('./assets/game-sounds/you-lose-101soundboards.mp3');
 var victorySFX = new Audio('./assets/game-sounds/you-win-street-fighter-101soundboards.mp3');
 var fightMusicShortSFX = new Audio('./assets/game-sounds/fight music short.mp3');
+var tieSFX = new Audio('./assets/game-sounds/tie-101soundboards.mp3')
 
 //youtube player display
 function initialModal(){modalDisplay('K1imOiVCgYM',"AH!  YOU HAVE ARRIVED!\n\nA great deal of effort has gone into \
@@ -421,12 +422,14 @@ function fight() {
   console.log("Code to display YOU WIN modal [ALL modals should have button to refresh page after player clicks them")
   modalDisplay('K1imOiVCgYM',"You Win!\nRefresh the page to play again")
 
-
+winSFX.play();
 
   }
   else if (playerPower < computerPower) {
     console.log("Code to display YOU LOSE modal")
     modalDisplay('K1imOiVCgYM',"You Lose!\nRefresh the page to play again")
+
+   defeatSFX.play();
 
   }
 
@@ -434,6 +437,7 @@ function fight() {
   console.log("OPTIONAL tie modal here")
   modalDisplay('K1imOiVCgYM',"You Tied!\nRefresh the page to play again")
 
+  tieSFX.play();
 }};
 
 

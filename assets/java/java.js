@@ -22,7 +22,14 @@ var fightMusicShortSFX = new Audio('./assets/game-sounds/fight music short.mp3')
 var tieSFX = new Audio('./assets/game-sounds/tie-101soundboards.mp3')
 
 //youtube player display
-function initialModal(){modalDisplay('K1imOiVCgYM',"Let's play a game",14,18)};// USED with "<body onload="initialModal()">"" in htm TO GET SOMETHING WITH MODAL TO LOAD ON "PAGE LOAD"-->
+
+function initialModal(){modalDisplay('K1imOiVCgYM',"AH!  YOU HAVE ARRIVED!\n\nA great deal of effort has gone into \
+this game. I hope that you at least try to enjoy it. It would be wise for you to make an enthusiastic effort. \
+\n\nYour motivation? - Peace and Balance cannot be kept in your worlds without you. Those who do not fight to your fullest \
+ability will suffer.\
+\n\nA TEAM OF 3 WILL CLAIM VICTORY! \nYou will be objects of my collection, permitted to live as you will, but you must \
+return to me when summoned. After all- WHAT IS A COLLECTOR WITHOUT HIS HOARD.",14,18)};// USED with "<body onload="initialModal()">"" in htm TO GET SOMETHING WITH MODAL TO LOAD ON "PAGE LOAD"-->
+
 
 
 function modalDisplay(videoId,title,start,end){
@@ -50,7 +57,6 @@ function modalDisplay(videoId,title,start,end){
         
     
   }});
-}
 
 
 
@@ -417,6 +423,7 @@ function fight() {
 
   if (playerPower > computerPower) {
   console.log("Code to display YOU WIN modal [ALL modals should have button to refresh page after player clicks them")
+
   modalDisplay('rrGMENN1iaY',"You Win",44,53)
 
 winSFX.play();
@@ -432,6 +439,7 @@ winSFX.play();
 
   else if (playerPower == computerPower) {
   console.log("OPTIONAL tie modal here")
+
   modalDisplay('rrGMENN1iaY',"You Tied",43,53)
 
   tieSFX.play();

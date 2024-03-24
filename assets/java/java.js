@@ -19,6 +19,7 @@ var winSFX = new Audio('./assets/game-sounds/up notification.wav');
 var defeatSFX= new Audio('./assets/game-sounds/you-lose-101soundboards.mp3');
 var victorySFX = new Audio('./assets/game-sounds/you-win-street-fighter-101soundboards.mp3');
 var fightMusicShortSFX = new Audio('./assets/game-sounds/fight music short.mp3');
+var tieSFX = new Audio('./assets/game-sounds/tie-101soundboards.mp3')
 
 //youtube player display
 function initialModal(){modalDisplay('K1imOiVCgYM',"Let's play a game")};// USED with "<body onload="initialModal()">"" in htm TO GET SOMETHING WITH MODAL TO LOAD ON "PAGE LOAD"-->
@@ -418,12 +419,14 @@ function fight() {
   console.log("Code to display YOU WIN modal [ALL modals should have button to refresh page after player clicks them")
   modalDisplay('K1imOiVCgYM',"You Win")
 
-
+winSFX.play();
 
   }
   else if (playerPower < computerPower) {
     console.log("Code to display YOU LOSE modal")
     modalDisplay('K1imOiVCgYM',"You Lose")
+
+   defeatSFX.play();
 
   }
 
@@ -431,6 +434,7 @@ function fight() {
   console.log("OPTIONAL tie modal here")
   modalDisplay('K1imOiVCgYM',"You Tied")
 
+  tieSFX.play();
 }};
 
 

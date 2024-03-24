@@ -25,6 +25,9 @@ section {
     margin: 0 15% 0 15%;
 }
 
+#gameplayField article div {
+    text-align: center;
+}
 section article * figure {
     width: 125px;
     height: 125px;
@@ -32,11 +35,20 @@ section article * figure {
     background-color: red;
     /*set css width/height to =thumbnail size*/
 }
-
 .character {
     display: flex;
     justify-content: center;
 }
+#fight {
+    display:block;
+    margin: auto;
+}
+
+#Characters {
+    text-align: center;
+}
+
+
 
 ol {
     display: flex;
@@ -135,3 +147,18 @@ figure {
 
 
 /*----------------------------------------------------------------- */
+/* SweetAlert changes*/
+
+/*applies to modal popup window*/
+
+div:where(.swal2-container) div:where(.swal2-popup) {
+    width: 50em;
+    background: #a3bce4;
+    color: white;
+}
+
+/*applies to the modal textbox element*/
+div:where(.swal2-container) h2:where(.swal2-title) {
+    font-size: 20px;
+    text-align: center;
+}

@@ -31,8 +31,8 @@ ability will suffer.\
 return to me when summoned. After all- WHAT IS A COLLECTOR WITHOUT HIS HOARD.",14,18)};// USED with "<body onload="initialModal()">"" in htm TO GET SOMETHING WITH MODAL TO LOAD ON "PAGE LOAD"-->
 
 
-
-function modalDisplay(videoId,title,start,end){
+function modalDisplay(videoId,title,start,end,delay){
+  setTimeout(function() {
   Swal.fire({
     title: title,
     html: '<div id="player"></div>',
@@ -57,8 +57,8 @@ function modalDisplay(videoId,title,start,end){
         
     
   }});
-
-
+}, delay);
+}
 
 // -------------------------------------------------------------//
 
@@ -368,7 +368,8 @@ function populateCharElm(box, character) {
   box.setAttribute('data-character', character.id);
 
   box.character = character;
-
+  
+  hitSFX.play();
 }
 
 
@@ -424,15 +425,15 @@ function fight() {
   if (playerPower > computerPower) {
   console.log("Code to display YOU WIN modal [ALL modals should have button to refresh page after player clicks them")
 
-  modalDisplay('rrGMENN1iaY',"You Win",44,53)
-
+  modalDisplay('rrGMENN1iaY',"You Win",44,53,2000)
+winSFX.volume =0.2;
 winSFX.play();
-
+window.location.reload();
   }
   else if (playerPower < computerPower) {
     console.log("Code to display YOU LOSE modal")
-    modalDisplay('JVy-6GChSrA',"You Lose",23,32)
-
+    modalDisplay('JVy-6GChSrA',"You Lose",23,32,2000)
+    defeatSFX.volume = 0.2;
    defeatSFX.play();
 
   }
@@ -440,8 +441,8 @@ winSFX.play();
   else if (playerPower == computerPower) {
   console.log("OPTIONAL tie modal here")
 
-  modalDisplay('rrGMENN1iaY',"You Tied",43,53)
-
+  modalDisplay('rrGMENN1iaY',"You Tied",43,53,2000)
+tieSFX.volume = 0.2;
   tieSFX.play();
 }};
 

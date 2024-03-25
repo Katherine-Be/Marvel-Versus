@@ -14,7 +14,7 @@
 
 <!-- Chris's Additions for Testing -->
 
-<body onload="initialModal()"><!--USED TO GET SOMETHING WITH MODAL TO LOAD ON "PAGE LOAD"-->
+<body> <!--onload="initialModal()">USED TO GET SOMETHING WITH MODAL TO LOAD ON "PAGE LOAD" -->
 <!--    <div id="player"></div>
     
 <button onclick="fight"> 2.FIGHT</button>
@@ -35,11 +35,10 @@
     </header>
 
     <main>
-
         <section id="gameplayField"> <!--maybe apply a background image to this later-->
         
             <article class="teams" id="playerTeam"><!--player's team list-->
-                <div>Your Team</div>
+                <div id="yourTeam">Your Team</div>
                 <ol>
                     <li  id="firstPC">
                         <figure id="characterBox1" class="character"></figure> <!--figures to accomodate image insertion-->
@@ -74,9 +73,7 @@
                 </ol>
                 <div>Competitors</div>
             </article>
-
         </section>
-
         <aside id="Characters">Pick Your Team!
             <div class="space"></div>
             <article id="Heroes"> <!--choices list--> <!--reduced# of selections for minimum viable product-->

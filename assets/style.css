@@ -1,6 +1,6 @@
 header { /*will be reformatted once banner image is added*/
     display: flex;
-    background-color: black;
+    background-image: url('./images/Marvel banner background.jpg');
     height: 20vh;
     justify-content: center;
 }
@@ -20,13 +20,22 @@ header img {
     object-position: center ;
 }}
 
+main {
+    background-image: url('./images/collector-slid.png');
+    background: cover;
+    background-repeat: none;
+    color: white;
+}
+
 section {
-    background-color: #00991f;
     margin: 0 15% 0 15%;
 }
 
-#gameplayField article div {
+#gameplayField, #Characters {
     text-align: center;
+    font-size: 30px;
+    font-weight: 100;
+    font-family: fantasy;
 }
 section article * figure {
     width: 125px;
@@ -39,21 +48,35 @@ section article * figure {
     display: flex;
     justify-content: center;
 }
+
+button {
+    z-index: auto;
+}
+
 #fight {
     display:block;
     margin: auto;
 }
 
-#Characters {
-    text-align: center;
-}
-
-
-
 ol {
     display: flex;
     justify-content: space-around;
 }
+
+li {
+    border-radius: 29%;
+    box-shadow: 7px 8px 5px 5px #0f00ffc9;
+}
+
+figure {
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+    border: solid 5px #360d6b;
+    border-radius: 25%;
+    box-shadow: inset 6px 3px 3px 0px #e7d0d0;
+}
+
 /* 
 ------------------Chris Testing Additions------------------------ 
 
@@ -139,11 +162,6 @@ margin-top: 10px;
 ----------------------------------------------------------------- */
 
 
-figure {
-    width: 100px;
-    height: 100px;
-    background-size: cover;
-}
 
 
 /*----------------------------------------------------------------- */

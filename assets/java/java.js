@@ -28,41 +28,43 @@ var tieSFX = new Audio('./assets/game-sounds/tie-101soundboards.mp3')
 function initialModal(){modalDisplay('L0zB330s3DQ','You arrive on Cygnus X-1 and are greeted by The Collector:\n\n"AH!  YOU HAVE ARRIVED!\nA great deal of effort has gone into \
 this game. I hope that you at least try to enjoy it. Make an enthusiastic effort, else you all may suffer a fool’s demise. \
 \n\nA TEAM OF 3 WILL CLAIM VICTORY! \nAnd become objects of my collection, permitted to live as you will, but you must \
-return to me when summoned.\nAfter all... WHAT IS A COLLECTOR WITHOUT HIS HOARD."',0,36)};// Used with "<body onload="initialModal()">"" in htm TO GET SOMETHING WITH MODAL TO LOAD ON "PAGE LOAD"-->
+return to me when summoned.\nAfter all... WHAT IS A COLLECTOR WITHOUT HIS HOARD."',0,36).then(() =>  {
+  backgroundSFX.volume = 0.2;
+  backgroundSFX.play();
+ })};// Used with "<body onload="initialModal()">"" in htm TO GET SOMETHING WITH MODAL TO LOAD ON "PAGE LOAD"-->
 
 
-function modalDisplay(videoId,title,start,end,delay){
-  setTimeout(function() {
-  Swal.fire({
-    title: title,
-    html: '<div id="player"></div>',
-  
-    didOpen: () => {
-      //const timer = Swal.getPopup().querySelector("b");
-     
-         new YT.Player('player', {
-          height: '360',
-          width: '639',
-          videoId: videoId,
-          playerVars: {
-            'autoplay': 1,
-            'start': start,
-            'end': end,
-            'controls': 0,
-            'showinfo' : 0, // Hides video title/about info video plays
-            'rel': 0, // Removes suggested videos after the video plays
-            'ecver': 2 // Removes suggested videos after the video plays
-          },
-          events: {
-            //'onReady': onPlayerReady,
-          }
-        });
-        
-    
-
-  }});
-}, delay);
+ function modalDisplay(videoId, title, start, end, delay) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      Swal.fire({
+        title: title,
+        html: '<div id="player"></div>',
+        didOpen: () => {
+          new YT.Player('player', {
+            height: '360',
+            width: '639',
+            videoId: videoId,
+            playerVars: {
+              'autoplay': 1,
+              'start': start,
+              'end': end,
+              'controls': 0,
+              'showinfo': 0,
+              'rel': 0,
+              'ecver': 2
+            },
+            events: {}
+          });
+        },
+        didClose: () => {
+          resolve(); // Resolve the promise when the modal is closed
+        }
+      });
+    }, delay);
+  });
 }
+
 
 
 // -------------------------------------------------------------//

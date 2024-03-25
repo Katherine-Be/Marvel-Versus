@@ -1,10 +1,9 @@
-header { /*will be reformatted once banner image is added*/
+header {
     display: flex;
     background-image: url('./images/Marvel banner background.jpg');
     height: 20vh;
     justify-content: center;
 }
-
 
 header img {
     width:50%;
@@ -15,13 +14,8 @@ header img {
     margin-right: auto;
 }
 
-/*instead of cutting the image at smaller screens, the image will shrink*/
-@media screen and (max-width:1220px) {header img {
-    object-position: center ;
-}}
-
 main {
-    background: black; /* in case the image doesnt load*/
+    background: black;
     height:100vh;
     background-image: url('./images/cropped-Large-Space-with-Collector.png');
     background-size: cover;
@@ -33,42 +27,63 @@ section {
     margin: 0 15% 0 15%;
 }
 
+#yourTeam {
+    padding: 20px; 
+}
+
+#Villains {
+    padding-top: 5px; 
+}
+
 #gameplayField, #Characters {
     text-align: center;
     font-size: 30px;
     font-weight: 100;
     font-family: fangsong;
-    text-shadow: 4px 3px 12px whitesmoke, 6px 4px 2px #4d074d;
+    text-shadow: 3px 2px 6px whitesmoke, 3px 2px 0px #4d074d;
 }
+
 section article * figure {
+ /* Set css width/height to equal thumbnail size */
     width: 125px;
     height: 125px;
     text-align: center;
-    background-color: red;
-    /*set css width/height to =thumbnail size*/
+    background-color: rgb(187 185 185 / 51%);
 }
 
 #Characters {
     border-top: solid 4px black;
+    padding: 10px;
 }
+
 .character {
     display: flex;
     justify-content: center;
 }
 
 #fight {
-    display:block;
-    margin: auto;
+    margin: 20px;
     background-color: #e7d0d0;
-    position: relative; /* allows for z-index to set button on top of everything*/
+    position: relative;
     z-index: 1;
+    padding: 10px; 
+    border-radius: 5px; 
+    background-image: linear-gradient(to right, purple, blue);
+    color: yellow;
+    border: solid 3px yellow; 
+}
+
+#competitorsText {
+    padding-bottom: 5px;
+    padding-top: 5px;  
 }
 
 #fight:hover {
-    zoom: 300%;
+    zoom: 110%;
     background: none;
-    color: white;
+    color: rgb(242, 255, 0);
     text-shadow: 4px 3px 12px whitesmoke, -2px -2px 2px purple;
+    border: solid 3px white;
 }
 
 ol {
@@ -78,7 +93,7 @@ ol {
 
 li {
     border-radius: 29%;
-    box-shadow: 7px 8px 5px 5px #0f00ffc9;
+    box-shadow: 5px 5px 5px 3px #0f00ffc9;
 }
 
 figure {
@@ -90,97 +105,21 @@ figure {
     box-shadow: inset 6px 3px 3px 0px #e7d0d0;
 }
 
-/* 
-------------------Chris Testing Additions------------------------ 
-
-
-aside article * figure { /*changed to be morespecific figure
-    width: 100px;
-    height: 100px;
-    background-size: cover;
-    background-color: blue;
+#Heroes {
+    padding-top: 10px; 
 }
 
-article div {
-    display: flex;
-    justify-content: center;
-}
-
-#myImage {
-    border: solid black 5px; 
-    width: 200px; 
-    height: 200px;
-    margin-top: 10px; 
-    }
-
-aside{
+footer {
     text-align: center;
+    padding: 20px;
+    margin-top: 120px; 
 }
 
-.space {
-    height: 5px;
-}
-/* #fight {
-    /*use button styler that was shown in class*/
-/* } */ 
+@media screen and (max-width:1220px) {header img {
+    object-position: center ;
+}}
 
-
-
-/*------------------Chris Testing Additions------------------------ */
-/* 
-body {
-    background-color: black;
-}
-
-.selectedCharacter {
-    border: solid black 5px; 
-    width: 200px; 
-    height: 200px;
-    margin-top: 10px;  
-}
-
-.cpuSelected {
-    border: solid black 5px; 
-    width: 200px; 
-    height: 200px; 
-    margin-top: 10px; 
-}
-
-.characterSelect {
-    border: solid black 5px; 
-    width: 200px; 
-    height: 200px; 
-    margin-top: 10px; 
-
-}
-.testPic {
-    width: 200px; 
-    height: 200px; 
-
-    
-}
-
-#myImage {
-border: solid black 5px; 
-width: 200px; 
-height: 200px;
-margin-top: 10px; 
-}
-#namePlate {
-    color:rgb(255, 255, 255);
-    
-
-
-}
------------------------------------------------------------------ */
-
-
-
-
-/*----------------------------------------------------------------- */
-/* SweetAlert changes*/
-
-/*applies to modal popup window*/
+/*------ SweetAlert Modal Styling ------*/
 
 div:where(.swal2-container) div:where(.swal2-popup) {
     width: 50em;
@@ -188,12 +127,8 @@ div:where(.swal2-container) div:where(.swal2-popup) {
     color: white;
 }
 
-/*applies to the modal textbox element*/
+/*Text Box Element*/
 div:where(.swal2-container) h2:where(.swal2-title) {
     font-size: 20px;
-    text-align: center;
-}
-
-footer {
     text-align: center;
 }

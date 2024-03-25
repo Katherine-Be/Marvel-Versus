@@ -121,11 +121,11 @@ function characterSelect(boxNumber) {
   const allCharacters = JSON.parse(localStorage.getItem('allCharacters'));
   const character = allCharacters && allCharacters.length ? allCharacters.filter(c => c.id == boxNumber)[0] : null;
 
-  if (!character) return alert('This hero has been eliminated. Please select a different hero.');
+  if (!character) return Swal.fire("This hero has been eliminated. Please select a different hero.");
   
   const box = document.querySelector('#playerTeam .character:empty');
 
-  if (!box) return alert('ready to play!');
+  if (!box) return Swal.fire("Max number of characters chosen. Ready to Fight!");
 
   // Get character for the specified boxNumber
   populateCharElm(box, character)

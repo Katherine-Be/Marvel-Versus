@@ -1,65 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-  
-
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Marvel Versus</title>
+  <link rel="icon" type="image/x-icon" href="./assets/images/favicon.png">
   <link rel="stylesheet" href="./assets/reset.css">
   <link rel="stylesheet" href="./assets/style.css">
 </head>
 
-
-<!-- Chris's Additions for Testing -->
-
-<body onload="initialModal()"><!--USED TO GET SOMETHING WITH MODAL TO LOAD ON "PAGE LOAD"-->
-<!--    <div id="player"></div>
-    
-<button onclick="fight"> 2.FIGHT</button>
-<button> 3.Play Again</button>
-
-<div id="characterBox1" class="selectedCharacter">Selected Character</div>
-<h1 id="namePlate"></h1>
-<div class="cpuSelected">CPU</div>
-<div id="characterSelect" class="characterSelect">Iron Man
-  <button id=#selectbtn onclick="characterSelect()">1. Character Select</button>
-</div> -->
-
-<!-- Chris's Additions for Testing -->
-
+<body onload="initialModal()"><!-- Displays the modal once the page is finished loading. -->
 
     <header id="banner">
         <img src="./assets/images/Marvel_Versus_1st_logo.PNG">
     </header>
 
     <main>
-        <section id="gameplayField"> <!--maybe apply a background image to this later-->
+        <section id="gameplayField">
         
-            <article class="teams" id="playerTeam"><!--player's team list-->
+            <!--player's team list-->
+
+            <article class="teams" id="playerTeam"> 
                 <div id="yourTeam">Your Team</div>
                 <ol>
+                    <!-- Player Character Selection Boxes -->
+
                     <li  id="firstPC">
-                        <figure id="characterBox1" class="character"></figure> <!--figures to accomodate image insertion-->
-                         <p id="namePlate1"></p>
+                        <figure id="characterBox1" class="character"></figure> 
+                        <p id="namePlate1"></p>
                     </li>
                     <li  id="secondPC">
                         <figure id="characterBox2" class="character"></figure>
                         <p id="namePlate2"></p>
-
                     </li>
                     <li  id="thirdPC">
                         <figure id="characterBox3" class="character"></figure>
                         <p id="namePlate3"></p>
-
                     </li>
                 </ol>
             </article>
 
             <button class="button" id="fight" onclick="fight();">Fight!</button>
 
-            <article class="teams" id="computerTeam"> <!--computer's team list, can be moved to after NPC list if wanted to look more like a gameboard-->
+            <!-- CPU Character Selection Boxes -->
+
+            <article class="teams" id="computerTeam">
                 <ol>
                     <li  id="firstNPC">
                         <figure class="character"></figure>
@@ -71,15 +57,19 @@
                         <figure class="character"></figure>
                     </li>
                 </ol>
+
                 <div>Competitors</div>
             </article>
+
+            <!-- Character Select Section Row 1-->
+
         </section>
         <aside id="Characters">Pick Your Team!
             <div class="space"></div>
-            <article id="Heroes"> <!--choices list--> <!--reduced# of selections for minimum viable product-->
+            <article id="Heroes">
                 <ol>
                     <li  id="Good1">
-                        <figure onclick="characterSelect(1009368)" class="character"></figure> <!--figures to accomodate image insertion--><!--runs function select() to select the character when clicked.-->
+                        <figure onclick="characterSelect(1009368)" class="character"></figure>
                     </li>
                     <li  id="Good2">
                         <figure onclick="characterSelect(1009282)" class="character"></figure>
@@ -88,7 +78,7 @@
                         <figure onclick="characterSelect(1009718)" class="character"></figure>
                     </li>               
                     <li  id="Good4">
-                        <figure onclick="characterSelect(1009351)" class="character"></figure> <!--figures to accomodate image insertion--><!--runs function select() to select the character when clicked.-->
+                        <figure onclick="characterSelect(1009351)" class="character"></figure> 
                     </li>
                     <li  id="Good5">
                         <figure onclick="characterSelect(1009610)" class="character"></figure>
@@ -99,11 +89,13 @@
                 </ol>
             </article>
 
-            <article id="Villains"> <!--player's team list--> <!--reduced# of selections for minimum viable product-->
+            <!-- Character Select Section Row 2 -->
+
+            <article id="Villains">
                 <div class="space"></div>
                 <ol>
                     <li  id="Evil1">
-                        <figure onclick="characterSelect(1009187)" class="character"></figure> <!--figures to accomodate image insertion-->
+                        <figure onclick="characterSelect(1009187)" class="character"></figure> 
                     </li>
                     <li  id="Evil2">
                         <figure onclick="characterSelect(1010743)" class="character"></figure>
@@ -112,7 +104,7 @@
                         <figure onclick="characterSelect(1010744)" class="character"></figure>
                     </li>                   
                     <li  id="Evil4">
-                        <figure onclick="characterSelect(1010763)" class="character"></figure> <!--figures to accomodate image insertion-->
+                        <figure onclick="characterSelect(1010763)" class="character"></figure>
                     </li>
                     <li  id="Evil5">
                         <figure onclick="characterSelect(1010735)" class="character"></figure>
@@ -124,10 +116,14 @@
             </article>
             
         </aside>
+
+        <footer>Thanks Marvel for your API</footer>
+
     </main>
+
     <script src="https://www.youtube.com/iframe_api"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="./assets/style.css"> <!--placed here to override sweetalert styles for modal-->
     <script src="./assets/java/java.js"></script>
-  </body>
+</body>
 </html>

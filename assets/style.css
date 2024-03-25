@@ -37,7 +37,7 @@ section {
     text-align: center;
     font-size: 30px;
     font-weight: 100;
-    font-family: fantasy;
+    font-family: fangsong;
     text-shadow: 4px 3px 12px whitesmoke, 6px 4px 2px #4d074d;
 }
 section article * figure {
@@ -191,5 +191,9 @@ div:where(.swal2-container) div:where(.swal2-popup) {
 /*applies to the modal textbox element*/
 div:where(.swal2-container) h2:where(.swal2-title) {
     font-size: 20px;
+    text-align: center;
+}
+
+footer {
     text-align: center;
 }

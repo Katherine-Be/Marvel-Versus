@@ -21,9 +21,10 @@ header img {
 }}
 
 main {
-    background-image: url('./images/collector-slid.png');
-    background: cover;
-    background-repeat: none;
+    height:100vh;
+    background-image: url('./images/cropped-Large-Space-with-Collector.png');
+    background-size: cover;
+    background-repeat: no-repeat;
     color: white;
 }
 

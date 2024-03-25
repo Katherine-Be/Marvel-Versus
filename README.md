@@ -23,7 +23,6 @@ From navigating Marvel's API, calling selected data into elements using JavaScri
 This game is meant to be played in the browser here: https://katherine-be.github.io/marvel-project/
 
 ## Usage
-[NEED SCREENSHOTS AND GIF]
 
 ![alt text](<./assets/images/Screenshot 2024-03-25 at 10.42.05 AM.png>)
 
@@ -52,6 +51,7 @@ Once the player is ready, click the fight button to see how your team fairs. Res
 
 * Modals: https://sweetalert2.github.io/#input-types
 <br>
+ * Duck Vector Image: https://www.vecteezy.com/vector-art/6792315-cute-yellow-duck-cartoon-collection <br>
 
 
 ## License

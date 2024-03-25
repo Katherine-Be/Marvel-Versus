@@ -21,6 +21,7 @@ header img {
 }}
 
 main {
+    background: black; /* in case the image doesnt load*/
     height:100vh;
     background-image: url('./images/cropped-Large-Space-with-Collector.png');
     background-size: cover;
@@ -37,6 +38,7 @@ section {
     font-size: 30px;
     font-weight: 100;
     font-family: fantasy;
+    text-shadow: 4px 3px 12px whitesmoke, 6px 4px 2px #4d074d;
 }
 section article * figure {
     width: 125px;
@@ -44,6 +46,10 @@ section article * figure {
     text-align: center;
     background-color: red;
     /*set css width/height to =thumbnail size*/
+}
+
+#Characters {
+    border-top: solid 4px black;
 }
 .character {
     display: flex;
@@ -53,8 +59,16 @@ section article * figure {
 #fight {
     display:block;
     margin: auto;
+    background-color: #e7d0d0;
     position: relative; /* allows for z-index to set button on top of everything*/
     z-index: 1;
+}
+
+#fight:hover {
+    zoom: 300%;
+    background: none;
+    color: white;
+    text-shadow: 4px 3px 12px whitesmoke, -2px -2px 2px purple;
 }
 
 ol {

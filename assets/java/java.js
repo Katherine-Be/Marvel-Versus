@@ -1,3 +1,5 @@
+
+
 // // TO DO: 
 // // Character Select - function to select character. once selected, the character goes to the selected box.
 // //                    their info goes into the array from the fetch request. (this happens three times)
@@ -21,14 +23,12 @@ var victorySFX = new Audio('./assets/game-sounds/you-win-street-fighter-101sound
 var fightMusicShortSFX = new Audio('./assets/game-sounds/fight music short.mp3');
 var tieSFX = new Audio('./assets/game-sounds/tie-101soundboards.mp3')
 
-//youtube player display
+// Youtube player display
 
-function initialModal(){modalDisplay('K1imOiVCgYM',"AH!  YOU HAVE ARRIVED!\n\nA great deal of effort has gone into \
-this game. I hope that you at least try to enjoy it. It would be wise for you to make an enthusiastic effort. \
-\n\nYour motivation? - Peace and Balance cannot be kept in your worlds without you. Those who do not fight to your fullest \
-ability will suffer.\
-\n\nA TEAM OF 3 WILL CLAIM VICTORY! \nYou will be objects of my collection, permitted to live as you will, but you must \
-return to me when summoned. After all- WHAT IS A COLLECTOR WITHOUT HIS HOARD.",14,18)};// USED with "<body onload="initialModal()">"" in htm TO GET SOMETHING WITH MODAL TO LOAD ON "PAGE LOAD"-->
+function initialModal(){modalDisplay('L0zB330s3DQ','You arrive on Cygnus X-1 and are greeted by The Collector:\n\n"AH!  YOU HAVE ARRIVED!\nA great deal of effort has gone into \
+this game. I hope that you at least try to enjoy it. Make an enthusiastic effort, else you all may suffer a fool’s demise. \
+\n\nA TEAM OF 3 WILL CLAIM VICTORY! \nAnd become objects of my collection, permitted to live as you will, but you must \
+return to me when summoned.\nAfter all... WHAT IS A COLLECTOR WITHOUT HIS HOARD."',0,36)};// Used with "<body onload="initialModal()">"" in htm TO GET SOMETHING WITH MODAL TO LOAD ON "PAGE LOAD"-->
 
 
 function modalDisplay(videoId,title,start,end,delay){
@@ -41,14 +41,17 @@ function modalDisplay(videoId,title,start,end,delay){
       //const timer = Swal.getPopup().querySelector("b");
      
          new YT.Player('player', {
-          height: '390',
-          width: '390',
+          height: '360',
+          width: '639',
           videoId: videoId,
           playerVars: {
             'autoplay': 1,
             'start': start,
             'end': end,
             'controls': 0,
+            'showinfo' : 0, // Hides video title/about info video plays
+            'rel': 0, // Removes suggested videos after the video plays
+            'ecver': 2 // Removes suggested videos after the video plays
           },
           events: {
             //'onReady': onPlayerReady,
@@ -56,9 +59,11 @@ function modalDisplay(videoId,title,start,end,delay){
         });
         
     
+
   }});
 }, delay);
 }
+
 
 // -------------------------------------------------------------//
 
@@ -259,16 +264,23 @@ const url = `${apiUrl}?apikey=${apiKey}&ts=${timestamp}&hash=${hash}&name=Iron M
 
 
 // };
-//loop replaces the fetchChoices()function which retrieves the characters individually//
+// Stores characters in an array
 fetchMultipleCharacters([
   "Iron Man",
   "Doctor Strange",
   "Wolverine",
   "Hulk",
   "Spider-Man (Peter Parker)",
-  "Jean Grey"
+  "Jean Grey",
+  "Black Panther",
+  "Groot",
+  "Rocket Raccoon",
+  "Gamora",
+  "Drax",
+  "Star-Lord (Peter Quill)",
 ]);
 
+// Fetches Marvel API data
 function fetchMultipleCharacters(characters) {
   allCharacters =[];
   characters.forEach((character, index) => {
@@ -283,7 +295,8 @@ function fetchMultipleCharacters(characters) {
               // console.log(comicTotal);
               // console.log(image);
               // ======= Chris code change 
-              const hero = data.data.results[0];
+              // Assigns variables to data for each character
+              const hero = data.data.results[0]; 
               const nameofHero = data.data.results[0].name;
               const image = hero.thumbnail.path + "." + hero.thumbnail.extension;
               const comicTotal = hero.comics.available;
@@ -295,7 +308,7 @@ function fetchMultipleCharacters(characters) {
               console.log('------------------------------------');
 // >>>>>>> main
 
-                            //Puts all of the character stats in the array
+                            // Put all chosen character data in the array
                               allCharacters.push({
                               characterName: character,
                               imageUrl: image,
@@ -319,10 +332,11 @@ function fetchMultipleCharacters(characters) {
 //               console.log('Img URL: '+image);
 //               console.log('------------------------------------');
 // // >>>>>>> main
-              if (index < 3) {
+              // Place images in character selection slots
+              if (index < 6) {
                   document.querySelector(`#Good${index + 1} figure`).style.backgroundImage = `url(${image})`;
               } else {
-                  document.querySelector(`#Evil${index - 2} figure`).style.backgroundImage = `url(${image})`;
+                  document.querySelector(`#Evil${index - 5} figure`).style.backgroundImage = `url(${image})`;
               }
           });
   })};
@@ -334,9 +348,9 @@ function characterSelect(boxNumber) {
   const allCharacters = JSON.parse(localStorage.getItem('allCharacters'));
   const character = allCharacters && allCharacters.length ? allCharacters.filter(c => c.id == boxNumber)[0] : null;
 
-  if (!character) return alert('Pick a nother chr.t. this one failed to load..');
+  if (!character) return alert('This hero has been eliminated. Please select a different hero.');//displays when hero does not load
 
-  const box = document.querySelector('#playerTeam .character:empty');
+  const box = document.querySelector('#playerTeam .character:empty');//DOES THIS SHOW? W/O IT, PLAYERS AN PICK JUST ONE OR TWO CHARACTERS
 
   if (!box) return alert('ready to play!');
 
@@ -357,7 +371,7 @@ function characterSelect(boxNumber) {
 
 function populateCharElm(box, character) {
 
-  // // Create and append image to character box
+  // Create and append image to character box
   var img = document.createElement('img');
 
   img.src = character.imageUrl;
@@ -425,10 +439,10 @@ function fight() {
   if (playerPower > computerPower) {
   console.log("Code to display YOU WIN modal [ALL modals should have button to refresh page after player clicks them")
 
+
   modalDisplay('rrGMENN1iaY',"You Win",44,53,2000)
 winSFX.volume =0.2;
 winSFX.play();
-window.location.reload();
   }
   else if (playerPower < computerPower) {
     console.log("Code to display YOU LOSE modal")

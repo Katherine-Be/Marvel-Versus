@@ -50,13 +50,11 @@ section article * figure {
     justify-content: center;
 }
 
-button {
-    z-index: auto;
-}
-
 #fight {
     display:block;
     margin: auto;
+    position: relative; /* allows for z-index to set button on top of everything*/
+    z-index: 1;
 }
 
 ol {

@@ -83,7 +83,7 @@ fetchMultipleCharacters([
 function fetchMultipleCharacters(characters) {
   allCharacters =[];
   characters.forEach((character, index) => {
-      fetch(`https://gateway.marvel.com/v1/public/characters?apikey=d4d97531c1e479bbe6e27b6f4139fa7e&ts=1&hash=685498cef61d5c0f1571a0d89fb966a0&name=${encodeURIComponent(character)}`)
+      fetch(`https://gateway.marvel.com/v1/public/characters?apikey=0a3686c67b8d739c93d3fa2a9a2a64b4&ts=1&hash=08e7de0ee278266d637da1251b801787&name=${encodeURIComponent(character)}`)
           .then(res => res.json())
           .then(data => {
               const hero = data.data.results[0]; 

@@ -56,12 +56,12 @@ section article * figure {
     padding: 10px;
 }
 
-.character {
+.character, .characterOption {
     display: flex;
     justify-content: center;
 }
 
-#fight {
+#fight, #restart {
     margin: 20px;
     background-color: #e7d0d0;
     position: relative;
@@ -73,12 +73,16 @@ section article * figure {
     border: solid 3px yellow; 
 }
 
+#restart {
+    font-size: 75%;
+}
+
 #competitorsText {
     padding-bottom: 5px;
     padding-top: 5px;  
 }
 
-#fight:hover {
+#fight:hover, #restart:hover {
     zoom: 110%;
     background: none;
     color: rgb(242, 255, 0);

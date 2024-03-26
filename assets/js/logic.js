@@ -202,6 +202,8 @@ function fight() {
     populateCharElm(computerCharElm, computerCharElm.character);
   }
   
+  console.log(playerPower);
+  console.log(computerPower);
 // ------------------- Display Result Modal ------------------- 
 
   if (playerPower > computerPower) {
@@ -227,3 +229,11 @@ winSFX.play();
 tieSFX.volume = 0.2;
   tieSFX.play();
 }};
+
+function clearGame() {
+  const imageElements = document.querySelectorAll("#playerTeam .character img, #computerTeam .character img");
+
+  imageElements.forEach(element => {
+    element.parentNode.removeChild(element);
+  });
+}

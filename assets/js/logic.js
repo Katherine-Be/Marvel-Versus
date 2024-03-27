@@ -210,13 +210,13 @@ function fight() {
   console.log("Code to display YOU WIN modal [ALL modals should have button to refresh page after player clicks them")
 
 
-  modalDisplay('rrGMENN1iaY',"You Win. Refresh your browser to play again!",44,53,2000)
+  modalDisplay('rrGMENN1iaY',"You Win!",44,53,2000)
 winSFX.volume =0.2;
 winSFX.play();
   }
   else if (playerPower < computerPower) {
     console.log("Code to display YOU LOSE modal")
-    modalDisplay('JVy-6GChSrA',"You Lose! Refresh your browser to try again!",23,32,2000)
+    modalDisplay('JVy-6GChSrA',"You Lose!",23,32,2000)
     defeatSFX.volume = 0.2;
    defeatSFX.play();
 
@@ -225,7 +225,7 @@ winSFX.play();
   else if (playerPower == computerPower) {
   console.log("OPTIONAL tie modal here")
 
-  modalDisplay('rrGMENN1iaY',"You Tied. Refresh your browser to play again!",43,53,2000)
+  modalDisplay('rrGMENN1iaY',"You Tied!",43,53,2000)
 tieSFX.volume = 0.2;
   tieSFX.play();
 }};

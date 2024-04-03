@@ -136,3 +136,38 @@ div:where(.swal2-container) h2:where(.swal2-title) {
     font-size: 20px;
     text-align: center;
 }
+
+@media screen and (max-width:375px){
+
+.swal2-container {
+    width: 100%;
+    height: 100%;
+ }
+ .swal2-title{
+    height: 41%;
+    width: 100%;
+ }
+ #player{
+    width: 100%;
+    height: 100%;
+ }
+
+main{
+    width: 375px;
+    height: 142vh;
+    background-image: url(./images/cropped-Large-Space-with-Collector.png);
+}
+#gameplayField{
+    width: auto;
+    margin: 0;
+}
+#Characters{
+    width: inherit;
+    height: 60vh;
+}
+article ol{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+}
